@@ -1,6 +1,7 @@
 enum AppRoutes {
   homePage,
   menuPage,
+  actsPage,
 }
 
 extension AppRoutesExtension on AppRoutes {
@@ -10,6 +11,8 @@ extension AppRoutesExtension on AppRoutes {
         return 'home_page';
       case AppRoutes.menuPage:
         return 'menu_page';
+      case AppRoutes.actsPage:
+        return 'acts_page';
     }
   }
 
@@ -19,6 +22,8 @@ extension AppRoutesExtension on AppRoutes {
         return '/home_page';
       case AppRoutes.menuPage:
         return '/menu_page';
+      case AppRoutes.actsPage:
+        return '/acts_page';
     }
   }
 }

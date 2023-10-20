@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:morning_mustard/constants/menu_button_data.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
 
 class MenuPage extends HookConsumerWidget {
@@ -12,6 +13,7 @@ class MenuPage extends HookConsumerWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        title: Text('Menu'),
         backgroundColor: Color.fromRGBO(255, 132, 24, 1),
         leading: IconButton(
           icon: Icon(Icons.arrow_back), // Replace with your desired icon
@@ -22,7 +24,7 @@ class MenuPage extends HookConsumerWidget {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -44,6 +46,10 @@ class MenuPage extends HookConsumerWidget {
                 return GestureDetector(
                   onTap: () {
                     print("Container $index tapped!");
+                    if (buttonItems[index].route != null) {
+                      ref.navigationService
+                          .goToRoute(buttonItems[index].route!);
+                    }
                   },
                   child: Material(
                     elevation: 10.0,
@@ -70,7 +76,7 @@ class MenuPage extends HookConsumerWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          'lib/assets/menu/menu_acts.imageset/menu_acts.png',
+                          buttonItems[index].imagePath,
                           fit: BoxFit.scaleDown,
                         ),
                       ),

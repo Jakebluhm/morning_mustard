@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:morning_mustard/pages/acts_page.dart';
 import 'package:morning_mustard/pages/home_page.dart';
 import 'package:morning_mustard/pages/menu_page.dart';
 import 'package:morning_mustard/router/app_router_constants.dart';
@@ -23,6 +24,11 @@ class AppRouter {
             name: AppRoutes.menuPage.toName(),
             path: AppRoutes.menuPage.toPath(),
             builder: (context, state) => MenuPage(),
+          ),
+          GoRoute(
+            name: AppRoutes.actsPage.toName(),
+            path: AppRoutes.actsPage.toPath(),
+            builder: (context, state) => ActsPage(),
           ),
         ]);
   }

@@ -72,6 +72,12 @@ flutter:
   assets:
     - lib/assets/Splash/looog1.imageset/New Logo.png
     - lib/assets/menu/menu_acts.imageset/menu_acts.png
+    - lib/assets/menu/menu_bubble.imageset/menu_bubble.png
+    - lib/assets/menu/menu_calendar.imageset/menu_calendar.png
+    - lib/assets/menu/menu_heart.imageset/menu_heart.png
+    - lib/assets/menu/menu_soldier.imageset/menu_soldier.png
+    - lib/assets/menu/menu_treasurebox.imageset/menu_treasurebox.png
+    - lib/assets/ACTS/lbl_walk.imageset/lbl_walk.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

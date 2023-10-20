@@ -42,4 +42,5 @@ class NavigationService {
 
   void goToHomePage() => goToRoute(AppRoutes.homePage);
   void goToMenuPage() => goToRoute(AppRoutes.menuPage);
+  void goToActsPage() => goToRoute(AppRoutes.actsPage);
 }
