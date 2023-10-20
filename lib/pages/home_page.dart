@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
+import 'package:morning_mustard/widgets/app_info_modal.dart';
 
 // This will manage the name as a state
 final nameProvider = StateProvider<String>((ref) => "");
@@ -18,11 +19,13 @@ class HomePage extends HookConsumerWidget {
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(255, 132, 24, 1),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
               Icons.question_mark_outlined), // Replace with your desired icon
           onPressed: () {
-            // Handle the button's press
-            print("Left Icon button pressed!");
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => AppInfoModal(),
+            );
           },
         ),
         actions: <Widget>[
@@ -40,11 +43,16 @@ class HomePage extends HookConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: screenWidth * 0.75,
-              child: Image.asset(
-                'lib/assets/Splash/looog1.imageset/New Logo.png',
-                fit: BoxFit.scaleDown,
+            GestureDetector(
+              onTap: () {
+                ref.navigationService.goToMenuPage();
+              },
+              child: Container(
+                width: screenWidth * 0.75,
+                child: Image.asset(
+                  'lib/assets/Splash/looog1.imageset/New Logo.png',
+                  fit: BoxFit.scaleDown,
+                ),
               ),
             ),
           ],

@@ -40,6 +40,7 @@ dependencies:
   hooks_riverpod: ^2.4.4
   freezed_annotation: ^2.4.1
   freezed: ^2.4.5
+  flutter_hooks: ^0.20.3
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +79,14 @@ flutter:
     - lib/assets/menu/menu_soldier.imageset/menu_soldier.png
     - lib/assets/menu/menu_treasurebox.imageset/menu_treasurebox.png
     - lib/assets/ACTS/lbl_walk.imageset/lbl_walk.png
+    - lib/assets/ACTS/ic_a.imageset/ic_a.png
+    - lib/assets/ACTS/ic_a_side.imageset/ic_a_side.png
+    - lib/assets/ACTS/ic_c.imageset/ic_c.png
+    - lib/assets/ACTS/ic_c_side.imageset/ic_c_side.png
+    - lib/assets/ACTS/ic_t.imageset/ic_t.png
+    - lib/assets/ACTS/ic_t_side.imageset/ic_t_side.png
+    - lib/assets/ACTS/ic_s.imageset/ic_s.png
+    - lib/assets/ACTS/ic_s_side.imageset/ic_s_side.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
