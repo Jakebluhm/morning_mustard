@@ -14,7 +14,7 @@ class MenuPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Menu',
           style: TextStyle(color: Colors.black),
         ),
@@ -39,19 +39,21 @@ class MenuPage extends HookConsumerWidget {
                 Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
               ]),
         ),
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // First column with 3 items
-              Expanded(
-                  child: columnOfItems(ref, 0, 3, screenHeight, screenWidth)),
-              SizedBox(width: screenWidth * 0.01), // spacing between columns
-              // Second column with 3 items
-              Expanded(
-                  child: columnOfItems(ref, 3, 6, screenHeight, screenWidth)),
-            ],
+        child: Container(
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // First column with 3 items
+                Expanded(
+                    child: columnOfItems(ref, 0, 3, screenHeight, screenWidth)),
+                SizedBox(width: screenWidth * 0.01), // spacing between columns
+                // Second column with 3 items
+                Expanded(
+                    child: columnOfItems(ref, 3, 6, screenHeight, screenWidth)),
+              ],
+            ),
           ),
         ),
       ),
@@ -62,6 +64,7 @@ class MenuPage extends HookConsumerWidget {
       double screenWidth) {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: buttonItems.getRange(start, end).map((item) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
