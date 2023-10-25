@@ -11,12 +11,17 @@ class MenuPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Menu'),
-        backgroundColor: Color.fromRGBO(255, 132, 24, 1),
+        title: Text(
+          'Menu',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Color.fromRGBO(255, 219, 88, 1),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Replace with your desired icon
+          icon: Icon(Icons.arrow_back),
+          color: Colors.black,
           onPressed: () {
             ref.navigationService.goToHomePage();
             print("Left Icon button pressed!");
@@ -29,64 +34,79 @@ class MenuPage extends HookConsumerWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color.fromRGBO(0xf2, 0x7a, 0x7d, 1.0),
+                Color.fromRGBO(255, 219, 88, 1.0),
                 Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
                 Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
               ]),
         ),
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: GridView.count(
-              mainAxisSpacing: screenHeight / 12,
-              crossAxisSpacing: screenWidth / 30,
-
-              crossAxisCount: 2, // Number of columns
-              children: List.generate(6, (index) {
-                return GestureDetector(
-                  onTap: () {
-                    print("Container $index tapped!");
-                    if (buttonItems[index].route != null) {
-                      ref.navigationService
-                          .goToRoute(buttonItems[index].route!);
-                    }
-                  },
-                  child: Material(
-                    elevation: 10.0,
-                    borderRadius: BorderRadius.circular(
-                        8.0), // Optional for rounded edges
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromARGB(255, 231, 235, 237),
-                            Color.fromARGB(255, 255, 255, 255)
-                          ],
-                        ),
-                        border: Border.all(
-                          color: Colors.black, // Border Color
-                          width: 1.0, // Border width
-                        ),
-                        borderRadius: BorderRadius.circular(
-                            8.0), // Match with Material borderRadius for shadow
-                      ),
-                      width: screenWidth * 0.45,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          buttonItems[index].imagePath,
-                          fit: BoxFit.scaleDown,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }),
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // First column with 3 items
+              Expanded(
+                  child: columnOfItems(ref, 0, 3, screenHeight, screenWidth)),
+              SizedBox(width: screenWidth * 0.01), // spacing between columns
+              // Second column with 3 items
+              Expanded(
+                  child: columnOfItems(ref, 3, 6, screenHeight, screenWidth)),
+            ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget columnOfItems(WidgetRef ref, int start, int end, double screenHeight,
+      double screenWidth) {
+    return Container(
+      child: Column(
+        children: buttonItems.getRange(start, end).map((item) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () {
+                //print("Container ${item.name} tapped!");
+                if (item.route != null) {
+                  ref.navigationService.goToRoute(item.route!);
+                }
+              },
+              child: Material(
+                elevation: 10.0,
+                borderRadius: BorderRadius.circular(8.0),
+                child: Container(
+                  height: screenHeight * 0.25,
+                  width: screenWidth * 0.4,
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.fromARGB(255, 255, 255, 255),
+                        Color.fromARGB(255, 217, 217, 217),
+                        Color.fromARGB(255, 255, 255, 255)
+                      ],
+                    ),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(
+                        1.0), // Match with Material borderRadius for shadow
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      item.imagePath,
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        }).toList(),
       ),
     );
   }

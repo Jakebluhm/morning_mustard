@@ -17,8 +17,9 @@ class HomePage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(255, 132, 24, 1),
+        backgroundColor: Color.fromRGBO(255, 219, 88, 1),
         leading: IconButton(
+          color: Colors.black,
           icon: const Icon(
               Icons.question_mark_outlined), // Replace with your desired icon
           onPressed: () {
@@ -30,6 +31,7 @@ class HomePage extends HookConsumerWidget {
         ),
         actions: <Widget>[
           IconButton(
+            color: Colors.black,
             icon: Icon(Icons.arrow_forward), // Replace with your desired icon
             onPressed: () {
               // Handle the button's press

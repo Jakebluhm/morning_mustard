@@ -86,7 +86,6 @@ class ActsPage extends HookConsumerWidget {
                         mainAxisSpacing: screenHeight * 0.01,
                         crossAxisSpacing: screenWidth * 0.5,
                         childAspectRatio: 1,
-
                         crossAxisCount: 2, // Number of columns
                         children: List.generate(8, (index) {
                           return GestureDetector(
