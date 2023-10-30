@@ -16,7 +16,7 @@ class ActsPage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Menu'),
-        backgroundColor: Color.fromRGBO(255, 219, 88, 1),
+        backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {

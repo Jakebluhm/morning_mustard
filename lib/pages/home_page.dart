@@ -17,7 +17,7 @@ class HomePage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(255, 219, 88, 1),
+        backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
           color: Colors.black,
           icon: const Icon(

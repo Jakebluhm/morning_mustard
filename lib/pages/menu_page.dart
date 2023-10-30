@@ -18,7 +18,7 @@ class MenuPage extends HookConsumerWidget {
           'Menu',
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Color.fromRGBO(255, 219, 88, 1),
+        backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.black,
@@ -34,7 +34,7 @@ class MenuPage extends HookConsumerWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color.fromRGBO(255, 219, 88, 1.0),
+                Color.fromRGBO(255, 173, 80, 1),
                 Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
                 Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
               ]),
