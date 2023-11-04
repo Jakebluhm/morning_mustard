@@ -15,12 +15,7 @@ class ArmorPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    // ButtonItem? chestItem = armorButtonItems.findByLabel('chest');
-    // ButtonItem? helmetItem = armorButtonItems.findByLabel('helmet');
-    // ButtonItem? legsItem = armorButtonItems.findByLabel('legs');
-    // ButtonItem? shieldItem = armorButtonItems.findByLabel('shield');
-    // ButtonItem? swordItem = armorButtonItems.findByLabel('sword');
-    // ButtonItem? waistItem = armorButtonItems.findByLabel('waist');
+
     final chestItem = useState(false);
     final helmetItem = useState(false);
     final legsItem = useState(false);

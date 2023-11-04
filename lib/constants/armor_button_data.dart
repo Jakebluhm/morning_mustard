@@ -47,16 +47,6 @@ List<ButtonItem> armorButtonItems = [
   // Add other items here if needed
 ];
 
-extension ArmorButtonItemsExtension on List<ButtonItem> {
-  ButtonItem? findByLabel(String label) {
-    // You don't need to change the case since you're using exact match labels now.
-    return firstWhere(
-      (item) => item.label == label,
-      // This will handle the case where no item is found.
-    );
-  }
-}
-
 extension ButtonItemExtension on ButtonItem {
   bool hasMatchingLabel(String labelToMatch) {
     return this.label == labelToMatch;
