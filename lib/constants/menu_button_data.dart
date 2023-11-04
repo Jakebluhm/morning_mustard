@@ -21,7 +21,8 @@ List<ButtonItem> buttonItems = [
       label: 'Label 4'),
   ButtonItem(
       imagePath: 'lib/assets/menu/menu_soldier.imageset/menu_soldier.png',
-      label: 'Label 5'),
+      label: 'Label 5',
+      route: AppRoutes.armorPage),
   ButtonItem(
       imagePath:
           'lib/assets/menu/menu_treasurebox.imageset/menu_treasurebox.png',

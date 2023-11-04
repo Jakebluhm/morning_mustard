@@ -87,6 +87,21 @@ flutter:
     - lib/assets/ACTS/ic_t_side.imageset/ic_t_side.png
     - lib/assets/ACTS/ic_s.imageset/ic_s.png
     - lib/assets/ACTS/ic_s_side.imageset/ic_s_side.png
+    - lib/assets/Soilder/Put on.imageset/Put on .png
+    - lib/assets/Soilder/Your Armor.imageset/Your Armor.png
+    - lib/assets/Soilder/unplace body.imageset/unplace body.png
+    - lib/assets/Soilder/body parts/chest sheild.imageset/chest sheild.png
+    - lib/assets/Soilder/body parts/sword with knob.imageset/sword with knob.png
+    - lib/assets/Soilder/body parts/sheild.imageset/sheild.png
+    - lib/assets/Soilder/body parts/Helmet.imageset/Helmet.png
+    - lib/assets/Soilder/body parts/leg arms.imageset/leg arms.png
+    - lib/assets/Soilder/body parts/waist.imageset/waist.png
+    - lib/assets/Soilder/armor with box/west with box.imageset/west with box.png
+    - lib/assets/Soilder/armor with box/shord with box.imageset/shord with box.png
+    - lib/assets/Soilder/armor with box/sheild with box.imageset/sheild with box.png
+    - lib/assets/Soilder/armor with box/leg arms with box.imageset/leg arms with box.png
+    - lib/assets/Soilder/armor with box/Helmet with box.imageset/Helmet with box.png
+    - lib/assets/Soilder/armor with box/chest sheild with box.imageset/chest sheild with box.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -43,4 +43,9 @@ class NavigationService {
   void goToHomePage() => goToRoute(AppRoutes.homePage);
   void goToMenuPage() => goToRoute(AppRoutes.menuPage);
   void goToActsPage() => goToRoute(AppRoutes.actsPage);
+  void goToArmorPage() => goToRoute(AppRoutes.armorPage);
+  void goToCalendarPage() => goToRoute(AppRoutes.calendarPage);
+  void goToBoxPage() => goToRoute(AppRoutes.boxPage);
+  void goToHeartPage() => goToRoute(AppRoutes.heartPage);
+  void goToSpeechPage() => goToRoute(AppRoutes.speechPage);
 }
