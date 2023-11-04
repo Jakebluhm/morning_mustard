@@ -1,25 +1,32 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/constants/armor_button_data.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
 import 'package:morning_mustard/widgets/armor_widget.dart';
+import 'package:tuple/tuple.dart';
 
 class ArmorPage extends HookConsumerWidget {
   ArmorPage();
-
-  ButtonItem? chestItem = armorButtonItems.findByLabel('chest');
-  ButtonItem? helmetItem = armorButtonItems.findByLabel('helmet');
-  ButtonItem? legsItem = armorButtonItems.findByLabel('legs');
-  ButtonItem? shieldItem = armorButtonItems.findByLabel('shield');
-  ButtonItem? swordItem = armorButtonItems.findByLabel('sword');
-  ButtonItem? waistItem = armorButtonItems.findByLabel('waist');
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    // ButtonItem? chestItem = armorButtonItems.findByLabel('chest');
+    // ButtonItem? helmetItem = armorButtonItems.findByLabel('helmet');
+    // ButtonItem? legsItem = armorButtonItems.findByLabel('legs');
+    // ButtonItem? shieldItem = armorButtonItems.findByLabel('shield');
+    // ButtonItem? swordItem = armorButtonItems.findByLabel('sword');
+    // ButtonItem? waistItem = armorButtonItems.findByLabel('waist');
+    final chestItem = useState(false);
+    final helmetItem = useState(false);
+    final legsItem = useState(false);
+    final shieldItem = useState(false);
+    final swordItem = useState(false);
+    final waistItem = useState(false);
 
     return Scaffold(
       appBar: AppBar(
@@ -66,7 +73,7 @@ class ArmorPage extends HookConsumerWidget {
                           ),
                         ),
                         width: screenWidth,
-                        height: screenHeight * 0.1,
+                        height: screenHeight * 0.15,
                       ),
                     ),
                   ],
@@ -121,10 +128,19 @@ class ArmorPage extends HookConsumerWidget {
                     children: armorButtonItems.map((buttonItem) {
                       return GestureDetector(
                         onTap: () {
-                          // Perform action on button press
-                          print("b43 Button press ${buttonItem.show.value}");
-                          buttonItem.show.value = !buttonItem.show.value;
-                          print("after Button press ${buttonItem.show.value}");
+                          if (buttonItem.hasMatchingLabel('chest')) {
+                            chestItem.value = !chestItem.value;
+                          } else if (buttonItem.hasMatchingLabel('helmet')) {
+                            helmetItem.value = !helmetItem.value;
+                          } else if (buttonItem.hasMatchingLabel('legs')) {
+                            legsItem.value = !legsItem.value;
+                          } else if (buttonItem.hasMatchingLabel('shield')) {
+                            shieldItem.value = !shieldItem.value;
+                          } else if (buttonItem.hasMatchingLabel('sword')) {
+                            swordItem.value = !swordItem.value;
+                          } else if (buttonItem.hasMatchingLabel('waist')) {
+                            waistItem.value = !waistItem.value;
+                          }
                         },
                         child: Image.asset(
                           buttonItem.imagePath,
@@ -151,12 +167,12 @@ class ArmorPage extends HookConsumerWidget {
             ),
             Center(
               child: ArmorWidget(
-                chest: chestItem!.show.value,
-                helmet: helmetItem!.show.value,
-                legs: legsItem!.show.value,
-                shield: shieldItem!.show.value,
-                sword: swordItem!.show.value,
-                waist: waistItem!.show.value,
+                chest: chestItem.value,
+                helmet: helmetItem.value,
+                legs: legsItem.value,
+                shield: shieldItem.value,
+                sword: swordItem.value,
+                waist: waistItem.value,
               ),
             )
           ],

@@ -16,13 +16,13 @@ class ButtonItem {
 List<ButtonItem> armorButtonItems = [
   ButtonItem(
     imagePath:
-        'lib/assets/Soilder/armor with box/west with box.imageset/west with box.png',
-    label: 'waist',
+        'lib/assets/Soilder/armor with box/shord with box.imageset/shord with box.png',
+    label: 'sword',
   ),
   ButtonItem(
     imagePath:
-        'lib/assets/Soilder/armor with box/shord with box.imageset/shord with box.png',
-    label: 'sword',
+        'lib/assets/Soilder/armor with box/west with box.imageset/west with box.png',
+    label: 'waist',
   ),
   ButtonItem(
     imagePath:
@@ -31,8 +31,8 @@ List<ButtonItem> armorButtonItems = [
   ),
   ButtonItem(
     imagePath:
-        'lib/assets/Soilder/armor with box/leg arms with box.imageset/leg arms with box.png',
-    label: 'legs',
+        'lib/assets/Soilder/armor with box/chest sheild with box.imageset/chest sheild with box.png',
+    label: 'chest',
   ),
   ButtonItem(
     imagePath:
@@ -41,8 +41,8 @@ List<ButtonItem> armorButtonItems = [
   ),
   ButtonItem(
     imagePath:
-        'lib/assets/Soilder/armor with box/chest sheild with box.imageset/chest sheild with box.png',
-    label: 'chest',
+        'lib/assets/Soilder/armor with box/leg arms with box.imageset/leg arms with box.png',
+    label: 'legs',
   ),
   // Add other items here if needed
 ];
@@ -54,5 +54,11 @@ extension ArmorButtonItemsExtension on List<ButtonItem> {
       (item) => item.label == label,
       // This will handle the case where no item is found.
     );
+  }
+}
+
+extension ButtonItemExtension on ButtonItem {
+  bool hasMatchingLabel(String labelToMatch) {
+    return this.label == labelToMatch;
   }
 }
