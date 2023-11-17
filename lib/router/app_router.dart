@@ -4,6 +4,7 @@ import 'package:morning_mustard/pages/acts_page.dart';
 import 'package:morning_mustard/pages/armor_page.dart';
 import 'package:morning_mustard/pages/home_page.dart';
 import 'package:morning_mustard/pages/menu_page.dart';
+import 'package:morning_mustard/pages/thoughts_page.dart';
 import 'package:morning_mustard/router/app_router_constants.dart';
 
 class AppRouter {
@@ -59,6 +60,12 @@ class AppRouter {
             path: AppRoutes.speechPage.toPath(),
             builder: (context, state) =>
                 Container(), // Placeholder for SpeechPage
+          ),
+          GoRoute(
+            name: AppRoutes.thoughtsPage.toName(),
+            path: AppRoutes.thoughtsPage.toPath(),
+            builder: (context, state) =>
+                ThoughtsPage(), // Placeholder for SpeechPage
           ),
         ]);
   }

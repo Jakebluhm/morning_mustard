@@ -7,6 +7,7 @@ enum AppRoutes {
   boxPage,
   heartPage,
   speechPage,
+  thoughtsPage,
 }
 
 extension AppRoutesExtension on AppRoutes {
@@ -26,8 +27,10 @@ extension AppRoutesExtension on AppRoutes {
         return 'box_page';
       case AppRoutes.heartPage:
         return 'heart_page';
-      case AppRoutes.speechPage: // Corrected spelling
+      case AppRoutes.speechPage:
         return 'speech_page';
+      case AppRoutes.thoughtsPage:
+        return 'thoughts_page';
     }
   }
 

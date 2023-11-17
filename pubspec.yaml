@@ -103,6 +103,16 @@ flutter:
     - lib/assets/Soilder/armor with box/leg arms with box.imageset/leg arms with box.png
     - lib/assets/Soilder/armor with box/Helmet with box.imageset/Helmet with box.png
     - lib/assets/Soilder/armor with box/chest sheild with box.imageset/chest sheild with box.png
+    - lib/assets/Thought/chain.png
+    - lib/assets/Thought/fact.png
+    - lib/assets/Thought/Feelings.png
+    - lib/assets/Thought/I Take my Thoughts  Captive to the  Obedience of Jesus.png
+    - lib/assets/Thought/Jesus.png
+    - lib/assets/Thought/Shape 2.png
+    - lib/assets/Thought/t1.png
+    - lib/assets/Thought/t2.png
+    - lib/assets/Thought/t3.png
+    - lib/assets/Thought/Thoughts.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

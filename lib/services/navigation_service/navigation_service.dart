@@ -48,4 +48,5 @@ class NavigationService {
   void goToBoxPage() => goToRoute(AppRoutes.boxPage);
   void goToHeartPage() => goToRoute(AppRoutes.heartPage);
   void goToSpeechPage() => goToRoute(AppRoutes.speechPage);
+  void goToThoughtsPage() => goToRoute(AppRoutes.thoughtsPage);
 }

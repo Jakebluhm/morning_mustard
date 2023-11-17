@@ -29,5 +29,6 @@ List<ButtonItem> buttonItems = [
       label: 'Label 6'),
   ButtonItem(
       imagePath: 'lib/assets/menu/menu_bubble.imageset/menu_bubble.png',
-      label: 'Label 2'),
+      label: 'Label 2',
+      route: AppRoutes.thoughtsPage),
 ];
