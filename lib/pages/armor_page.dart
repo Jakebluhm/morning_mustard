@@ -5,8 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/constants/armor_button_data.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
+import 'package:morning_mustard/widgets/armor_info_modal.dart';
 import 'package:morning_mustard/widgets/armor_widget.dart';
-import 'package:tuple/tuple.dart';
 
 class ArmorPage extends HookConsumerWidget {
   ArmorPage();
@@ -22,6 +22,20 @@ class ArmorPage extends HookConsumerWidget {
     final shieldItem = useState(false);
     final swordItem = useState(false);
     final waistItem = useState(false);
+
+    void onInfoPress(
+      BuildContext context,
+      String heading,
+      String infoText,
+    ) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) =>
+            ArmorInfoModal(heading: heading, infoText: infoText),
+      );
+    }
+
+    ;
 
     return Scaffold(
       appBar: AppBar(
@@ -168,6 +182,7 @@ class ArmorPage extends HookConsumerWidget {
                 shield: shieldItem.value,
                 sword: swordItem.value,
                 waist: waistItem.value,
+                onInfoPress: onInfoPress,
               ),
             )
           ],
