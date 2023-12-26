@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:morning_mustard/pages/acts_page.dart';
 import 'package:morning_mustard/pages/armor_page.dart';
+import 'package:morning_mustard/pages/heart_page.dart';
 import 'package:morning_mustard/pages/home_page.dart';
 import 'package:morning_mustard/pages/menu_page.dart';
 import 'package:morning_mustard/pages/thoughts_page.dart';
@@ -53,7 +54,7 @@ class AppRouter {
             name: AppRoutes.heartPage.toName(),
             path: AppRoutes.heartPage.toPath(),
             builder: (context, state) =>
-                Container(), // Placeholder for HeartPage
+                HeartPage(), // Placeholder for HeartPage
           ),
           GoRoute(
             name: AppRoutes.speechPage.toName(),

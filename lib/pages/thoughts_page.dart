@@ -22,7 +22,10 @@ class ThoughtsPage extends HookConsumerWidget {
     double imageHeight = screenHeight * 0.8;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Armor'),
+        title: Text(
+          'Armor',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),

@@ -25,7 +25,7 @@ class ArmorWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    double imageWidth = screenHeight * 0.2; // Width of the soldier image
+    double imageWidth = screenHeight * 0.25; // Width of the soldier image
     double imageHeight = imageWidth * 1.539499;
     // 519 x 799
     return Center(

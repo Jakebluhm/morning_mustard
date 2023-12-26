@@ -113,6 +113,8 @@ flutter:
     - lib/assets/Thought/t2.png
     - lib/assets/Thought/t3.png
     - lib/assets/Thought/Thoughts.png
+    - lib/assets/heart/Thy Word.imageset/heart_heading.png
+    - lib/assets/heart/heart.imageset/heart.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

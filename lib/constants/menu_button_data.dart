@@ -18,7 +18,8 @@ List<ButtonItem> buttonItems = [
       label: 'Label 3'),
   ButtonItem(
       imagePath: 'lib/assets/menu/menu_heart.imageset/menu_heart.png',
-      label: 'Label 4'),
+      label: 'Label 4',
+      route: AppRoutes.heartPage),
   ButtonItem(
       imagePath: 'lib/assets/menu/menu_soldier.imageset/menu_soldier.png',
       label: 'Label 5',
