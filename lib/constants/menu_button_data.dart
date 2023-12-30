@@ -27,7 +27,8 @@ List<ButtonItem> buttonItems = [
   ButtonItem(
       imagePath:
           'lib/assets/menu/menu_treasurebox.imageset/menu_treasurebox.png',
-      label: 'Label 6'),
+      label: 'Label 6',
+      route: AppRoutes.boxPage),
   ButtonItem(
       imagePath: 'lib/assets/menu/menu_bubble.imageset/menu_bubble.png',
       label: 'Label 2',

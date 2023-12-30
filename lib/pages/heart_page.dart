@@ -22,9 +22,11 @@ class HeartPage extends HookConsumerWidget {
 
     // Function to add a verse to the list
     void addVerse(String verse) {
-      VersesNotifier.addVerse(verse);
-      currentVerse.value = verse;
-      verseController.clear();
+      if (verse.isNotEmpty) {
+        VersesNotifier.addVerse(verse);
+        currentVerse.value = verse;
+        verseController.clear();
+      }
     }
 
     // Function to add a verse to the list
@@ -68,30 +70,31 @@ class HeartPage extends HookConsumerWidget {
               ]),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.15),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.15),
               child: Image.asset(
                 'lib/assets/heart/Thy Word.imageset/heart_heading.png',
                 fit: BoxFit.contain,
               ),
             ),
-            GestureDetector(
-              onTap: () => onInfoPress(context),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset(
-                    'lib/assets/heart/heart.imageset/heart.png',
-                    fit: BoxFit.contain,
-                    height: imageHeight,
-                  ),
-                  Text(
-                    verses.current.length > 0 ? verses.current.last : '',
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+            Expanded(
+              child: GestureDetector(
+                onTap: () => onInfoPress(context),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Image.asset(
+                      'lib/assets/heart/heart.imageset/heart.png',
+                      fit: BoxFit.contain,
+                    ),
+                    Text(
+                      verses.current.length > 0 ? verses.current.last : '',
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -104,7 +107,7 @@ class HeartPage extends HookConsumerWidget {
                   labelText: 'Add a Verse',
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:morning_mustard/pages/acts_page.dart';
 import 'package:morning_mustard/pages/armor_page.dart';
 import 'package:morning_mustard/pages/heart_page.dart';
 import 'package:morning_mustard/pages/home_page.dart';
+import 'package:morning_mustard/pages/box_page.dart';
 import 'package:morning_mustard/pages/menu_page.dart';
 import 'package:morning_mustard/pages/thoughts_page.dart';
 import 'package:morning_mustard/router/app_router_constants.dart';
@@ -48,7 +49,7 @@ class AppRouter {
           GoRoute(
             name: AppRoutes.boxPage.toName(),
             path: AppRoutes.boxPage.toPath(),
-            builder: (context, state) => Container(), // Placeholder for BoxPage
+            builder: (context, state) => BoxPage(), // Placeholder for BoxPage
           ),
           GoRoute(
             name: AppRoutes.heartPage.toName(),
