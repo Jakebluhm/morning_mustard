@@ -32,6 +32,7 @@ class ArmorInfoModal extends StatelessWidget {
 
                 Text(
                   heading,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24, // Larger font size
                     fontWeight: FontWeight.bold, // Bold text
@@ -44,9 +45,11 @@ class ArmorInfoModal extends StatelessWidget {
                     // Styling for body text
                     child: Text(
                       infoText,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18, // Larger than normal body text
-                        color: Colors.black54, // Slightly muted color
+                        color: Colors.black54,
+                        // Slightly muted color
                       ),
                     ),
                   ),
