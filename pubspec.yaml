@@ -114,6 +114,15 @@ flutter:
     - lib/assets/Thought/t3.png
     - lib/assets/Thought/Thoughts.png
     - lib/assets/Thought/chains_jesus.png
+    - lib/assets/heart/Thy Word.imageset/heart_heading.png
+    - lib/assets/heart/heart.imageset/heart.png
+    - lib/assets/TreasureBox/Ellipse 1.imageset/Ellipse 1.png
+    - lib/assets/TreasureBox/Shape 1.imageset/Shape 1.png
+    - lib/assets/TreasureBox/Open box without coin.imageset/Open box without coin.png
+    - lib/assets/TreasureBox/All coin.imageset/All coin.png
+    - lib/assets/TreasureBox/Close box.imageset/Close box.png
+    - lib/assets/TreasureBox/box_closed.png
+    - lib/assets/TreasureBox/box_opened.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

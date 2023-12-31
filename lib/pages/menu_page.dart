@@ -16,7 +16,7 @@ class MenuPage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text(
           'Menu',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(

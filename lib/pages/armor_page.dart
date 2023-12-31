@@ -39,7 +39,10 @@ class ArmorPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Armor'),
+        title: Text(
+          'Armor',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -75,9 +78,9 @@ class ArmorPage extends HookConsumerWidget {
                     Center(
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(118, 0, 67, 1),
+                          color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 1),
                           border: Border.all(
-                            color: Color.fromRGBO(118, 0, 67, 1),
+                            color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 1),
                             width: 0,
                           ),
                         ),
@@ -113,9 +116,9 @@ class ArmorPage extends HookConsumerWidget {
                   Center(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(118, 0, 67, 1),
+                        color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 1),
                         border: Border.all(
-                          color: Color.fromRGBO(118, 0, 67, 1),
+                          color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 1),
                           width: 0,
                         ),
                       ),
@@ -196,7 +199,7 @@ class TrianglePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
-      ..color = Color.fromRGBO(118, 0, 67, 1)
+      ..color = Color.fromRGBO(0x6b, 0x3e, 0x2e, 1)
       ..style = PaintingStyle.fill;
 
     var path = Path();
