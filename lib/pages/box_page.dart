@@ -149,30 +149,34 @@ class BoxPage extends HookConsumerWidget {
                                 width: imageHeight,
                               ),
                             ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Transform.translate(
-                          offset: Offset(0, imageHeight * -0.12),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                color: burdens.current.length > 0
-                                    ? Colors.white.withOpacity(0.65)
-                                    : Colors.transparent),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                burdens.current.length > 0
-                                    ? burdens.current.last
-                                    : '',
-                                style: TextStyle(fontWeight: FontWeight.w500),
-                                textAlign: TextAlign.center,
+                      boxOpen.value
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Transform.translate(
+                                offset: Offset(0, imageHeight * -0.12),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10)),
+                                      color: burdens.current.length > 0
+                                          ? Colors.white.withOpacity(0.65)
+                                          : Colors.transparent),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      burdens.current.length > 0
+                                          ? burdens.current.last
+                                          : '',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
+                            )
+                          : Container(),
                     ],
                   ),
                 ),

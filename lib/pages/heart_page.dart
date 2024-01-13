@@ -13,6 +13,8 @@ class HeartPage extends HookConsumerWidget {
     final verses = ref.watch(versusProvider);
     final VersesNotifier = ref.watch(versusProvider.notifier);
 
+    final showText = useState(false);
+
     final currentVerse = useState<String>("");
     final TextEditingController verseController = useTextEditingController();
 
@@ -81,7 +83,13 @@ class HeartPage extends HookConsumerWidget {
             ),
             Expanded(
               child: GestureDetector(
-                onTap: () => onInfoPress(context),
+                onTap: () {
+                  if (showText.value) {
+                    onInfoPress(context);
+                  } else {
+                    showText.value = true;
+                  }
+                },
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
@@ -89,10 +97,14 @@ class HeartPage extends HookConsumerWidget {
                       'lib/assets/heart/heart.imageset/heart.png',
                       fit: BoxFit.contain,
                     ),
-                    Text(
-                      verses.current.length > 0 ? verses.current.last : '',
-                      textAlign: TextAlign.center,
-                    ),
+                    showText.value
+                        ? Text(
+                            verses.current.length > 0
+                                ? verses.current.last
+                                : '',
+                            textAlign: TextAlign.center,
+                          )
+                        : Container(),
                   ],
                 ),
               ),
