@@ -33,6 +33,9 @@ class HeartPage extends HookConsumerWidget {
 
     // Function to add a verse to the list
     void deleteVerse(String verse) {
+      if (verse == currentVerse.value) {
+        currentVerse.value = '';
+      }
       VersesNotifier.deleteVerse(verse);
     }
 
@@ -99,9 +102,7 @@ class HeartPage extends HookConsumerWidget {
                     ),
                     showText.value
                         ? Text(
-                            verses.current.length > 0
-                                ? verses.current.last
-                                : '',
+                            currentVerse.value,
                             textAlign: TextAlign.center,
                           )
                         : Container(),

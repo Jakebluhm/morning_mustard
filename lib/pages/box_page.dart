@@ -35,6 +35,9 @@ class BoxPage extends HookConsumerWidget {
 
     // Function to add a burden to the list
     void deleteBurden(String burden) {
+      if (burden == currentBurden.value) {
+        currentBurden.value = '';
+      }
       burdensNotifier.deleteBurden(burden);
     }
 
@@ -149,7 +152,7 @@ class BoxPage extends HookConsumerWidget {
                                 width: imageHeight,
                               ),
                             ),
-                      boxOpen.value
+                      currentBurden.value.isNotEmpty
                           ? Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16.0),
@@ -165,10 +168,8 @@ class BoxPage extends HookConsumerWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      burdens.current.length > 0
-                                          ? burdens.current.last
-                                          : '',
-                                      style: TextStyle(
+                                      currentBurden.value,
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.w500),
                                       textAlign: TextAlign.center,
                                     ),
@@ -188,7 +189,7 @@ class BoxPage extends HookConsumerWidget {
                     child: TextField(
                       controller: burdenController,
                       onSubmitted: addBurden,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Add a Burden',
                       ),
