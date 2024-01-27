@@ -15,7 +15,8 @@ List<ButtonItem> buttonItems = [
       route: AppRoutes.actsPage),
   ButtonItem(
       imagePath: 'lib/assets/menu/menu_calendar.imageset/menu_calendar.png',
-      label: 'Label 3'),
+      label: 'Label 3',
+      route: AppRoutes.calendarPage),
   ButtonItem(
       imagePath: 'lib/assets/menu/menu_heart.imageset/menu_heart.png',
       label: 'Label 4',

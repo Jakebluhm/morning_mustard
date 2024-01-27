@@ -13,10 +13,11 @@ Future<void> main() async {
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]);
-  runApp(ProviderScope(
-      overrides: [navigatorKeyProvider.overrideWithValue(navigationKey)],
-      child: MyApp()));
+  ]).then((_) {
+    runApp(ProviderScope(
+        overrides: [navigatorKeyProvider.overrideWithValue(navigationKey)],
+        child: MyApp()));
+  });
 }
 
 class MyApp extends ConsumerWidget {

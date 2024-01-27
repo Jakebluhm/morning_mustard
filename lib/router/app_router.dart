@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:morning_mustard/pages/acts_page.dart';
 import 'package:morning_mustard/pages/armor_page.dart';
+import 'package:morning_mustard/pages/calendar_page.dart';
 import 'package:morning_mustard/pages/heart_page.dart';
 import 'package:morning_mustard/pages/home_page.dart';
 import 'package:morning_mustard/pages/box_page.dart';
@@ -37,37 +38,32 @@ class AppRouter {
           GoRoute(
             name: AppRoutes.armorPage.toName(),
             path: AppRoutes.armorPage.toPath(),
-            builder: (context, state) =>
-                ArmorPage(), // Placeholder for ArmorPage
+            builder: (context, state) => ArmorPage(),
           ),
           GoRoute(
             name: AppRoutes.calendarPage.toName(),
             path: AppRoutes.calendarPage.toPath(),
-            builder: (context, state) =>
-                Container(), // Placeholder for CalendarPage
+            builder: (context, state) => CalendarPage(),
           ),
           GoRoute(
             name: AppRoutes.boxPage.toName(),
             path: AppRoutes.boxPage.toPath(),
-            builder: (context, state) => BoxPage(), // Placeholder for BoxPage
+            builder: (context, state) => BoxPage(),
           ),
           GoRoute(
             name: AppRoutes.heartPage.toName(),
             path: AppRoutes.heartPage.toPath(),
-            builder: (context, state) =>
-                HeartPage(), // Placeholder for HeartPage
+            builder: (context, state) => HeartPage(),
           ),
           GoRoute(
             name: AppRoutes.speechPage.toName(),
             path: AppRoutes.speechPage.toPath(),
-            builder: (context, state) =>
-                Container(), // Placeholder for SpeechPage
+            builder: (context, state) => Container(),
           ),
           GoRoute(
             name: AppRoutes.thoughtsPage.toName(),
             path: AppRoutes.thoughtsPage.toPath(),
-            builder: (context, state) =>
-                ThoughtsPage(), // Placeholder for SpeechPage
+            builder: (context, state) => ThoughtsPage(),
           ),
         ]);
   }
