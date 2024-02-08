@@ -20,6 +20,9 @@ class CalendarEntryWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     final activeIndexNotifier = ref.watch(activeIndexProvider.notifier);
 
     return GestureDetector(

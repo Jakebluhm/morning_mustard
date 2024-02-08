@@ -11,11 +11,40 @@ import 'package:morning_mustard/widgets/calendar_entry_widget.dart';
 class CalendarPage extends HookConsumerWidget {
   CalendarPage({Key? key}) : super(key: key);
 
+  Widget buildCalendarEntryRow({
+    required List<CalendarEntry> entriesSegment,
+    required WidgetRef ref,
+    required int? activeIndex,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: entriesSegment.map((entry) {
+        return CalendarEntryWidget(
+          imagePath: entry.imagePath,
+          index: entry.index,
+          onTap: () {
+            ref.read(activeIndexProvider.notifier).setActiveIndex(entry.index);
+            print("Setting active index to ${entry.index}");
+          },
+          isActive: activeIndex == entry.index,
+        );
+      }).toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     final caledarEntries = ref.watch(calendarEntriesProvider);
     final activeIndexNotifier = ref.watch(activeIndexProvider.notifier);
     final activeIndex = ref.watch(activeIndexProvider);
+
+    // Assuming calendarEntries is a list with at least 16 items
+    final firstRowEntries = caledarEntries.sublist(0, 8);
+    final secondRowEntries = caledarEntries.sublist(8, 16);
+    final thirdRowEntries = caledarEntries.sublist(16, 23);
+    final fourthRowEntries = caledarEntries.sublist(23, 30);
 
     List<String> days = [
       'Everyday',
@@ -68,31 +97,29 @@ class CalendarPage extends HookConsumerWidget {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [...daysColumnHeaders],
             ),
-            Row(
-              children: [
-                CalendarEntryWidget(
-                  imagePath: caledarEntries[0].imagePath,
-                  index: caledarEntries[0].index,
-                  onTap: () {
-                    print("Setting active index to 0");
-                    activeIndexNotifier.setActiveIndex(0);
-                  },
-                  isActive: activeIndex == 0,
-                ),
-                CalendarEntryWidget(
-                  imagePath: caledarEntries[1].imagePath,
-                  index: caledarEntries[1].index,
-                  onTap: () {
-                    print("Setting active index to 1");
-                    activeIndexNotifier.setActiveIndex(1);
-                  },
-                  isActive: activeIndex == 1,
-                ),
-              ],
-            )
+            buildCalendarEntryRow(
+              entriesSegment: firstRowEntries,
+              ref: ref,
+              activeIndex: activeIndex,
+            ),
+            buildCalendarEntryRow(
+              entriesSegment: secondRowEntries,
+              ref: ref,
+              activeIndex: activeIndex,
+            ),
+            buildCalendarEntryRow(
+              entriesSegment: thirdRowEntries,
+              ref: ref,
+              activeIndex: activeIndex,
+            ),
+            buildCalendarEntryRow(
+              entriesSegment: fourthRowEntries,
+              ref: ref,
+              activeIndex: activeIndex,
+            ),
           ],
         ),
       ),
