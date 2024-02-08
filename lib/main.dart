@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:morning_mustard/router/app_router.dart';
 
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
@@ -23,12 +24,17 @@ Future<void> main() async {
 class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp.router(
-      routerConfig: router,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-    );
+    return ScreenUtilInit(
+        designSize:
+            Size(360, 690), // Set the design size based on your preference
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => MaterialApp.router(
+              routerConfig: router,
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+            ));
   }
 }
