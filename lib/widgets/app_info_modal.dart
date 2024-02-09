@@ -23,7 +23,12 @@ class AppInfoModal extends StatelessWidget {
                 const SizedBox(height: 20), // For spacing
                 Expanded(
                   child: SingleChildScrollView(
-                    child: Text(appInfoText),
+                    child: Text(
+                      appInfoText,
+                      style: TextStyle(
+                        fontFamily: 'OverlockSC',
+                      ),
+                    ),
                   ),
                 ),
               ],

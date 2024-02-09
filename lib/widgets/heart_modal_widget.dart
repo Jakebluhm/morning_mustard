@@ -37,7 +37,12 @@ class HeartModal extends HookConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(verses.current[index]),
+                      Text(
+                        verses.current[index],
+                        style: TextStyle(
+                          fontFamily: 'OverlockSC',
+                        ),
+                      ),
                       IconButton(
                           onPressed: () {
                             print('delete verse');

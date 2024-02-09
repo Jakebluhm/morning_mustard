@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/constants/menu_button_data.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
@@ -9,6 +10,13 @@ class MenuPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Enforce portrait orientation for this screen
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
+    });
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -16,7 +24,11 @@ class MenuPage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text(
           'Menu',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OverlockSC',
+          ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(

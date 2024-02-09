@@ -17,7 +17,12 @@ class AppRouter {
         observers: null,
         initialLocation: AppRoutes.homePage.toPath(),
         errorBuilder: (context, state) => Container(
-              child: Text('Error'),
+              child: Text(
+                'Error',
+                style: TextStyle(
+                  fontFamily: 'OverlockSC',
+                ),
+              ),
             ),
         routes: [
           GoRoute(

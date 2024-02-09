@@ -52,7 +52,11 @@ class HeartPage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(
           'Heart',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OverlockSC',
+          ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
@@ -104,6 +108,9 @@ class HeartPage extends HookConsumerWidget {
                         ? Text(
                             currentVerse.value,
                             textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'OverlockSC',
+                            ),
                           )
                         : Container(),
                   ],
@@ -113,6 +120,9 @@ class HeartPage extends HookConsumerWidget {
             Padding(
               padding: EdgeInsets.all(8.0),
               child: TextField(
+                style: TextStyle(
+                  fontFamily: 'OverlockSC',
+                ),
                 controller: verseController,
                 onSubmitted: addVerse,
                 decoration: InputDecoration(

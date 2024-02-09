@@ -47,20 +47,83 @@ class CalendarEntryWidget extends HookConsumerWidget {
                   Icons.info_outline,
                   size: 5.w,
                 ), // Replace with your desired icon
-                onPressed: () {
-                  // Handle your button action here
-                  print('Button tapped');
+                onPressed: () async {
+                  // Create a TextEditingController
+                  final TextEditingController controller =
+                      TextEditingController();
+                  // Show dialog
+                  final newName = await showDialog<String>(
+                    context: context,
+                    builder: (context) => SingleChildScrollView(
+                      child: AlertDialog(
+                        title: Text(
+                          'Edit Name',
+                          style: TextStyle(
+                            fontFamily: 'OverlockSC',
+                          ),
+                        ),
+                        content: TextField(
+                          style: TextStyle(
+                            fontFamily: 'OverlockSC',
+                          ),
+                          controller: controller,
+                          decoration:
+                              InputDecoration(hintText: "Enter new name"),
+                        ),
+                        actions: [
+                          TextButton(
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                fontFamily: 'OverlockSC',
+                              ),
+                            ),
+                            onPressed: () => Navigator.of(context).pop(),
+                          ),
+                          TextButton(
+                            child: Text(
+                              'Save',
+                              style: TextStyle(
+                                fontFamily: 'OverlockSC',
+                              ),
+                            ),
+                            onPressed: () =>
+                                Navigator.of(context).pop(controller.text),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+
+                  if (newName != null && newName.isNotEmpty) {
+                    ref
+                        .read(calendarEntriesProvider.notifier)
+                        .updateName(index, newName);
+                  }
                 },
               ),
             ),
-            Center(
-              child: imagePath.isNotEmpty
-                  ? Image.asset(
-                      imagePath, // Replace with your actual image path
-                      fit: BoxFit.cover, // Adjust the fit as needed
-                    )
-                  : Container(),
+            Padding(
+              padding: EdgeInsets.only(bottom: 12.0.h),
+              child: Center(
+                child: imagePath.isNotEmpty
+                    ? Image.asset(
+                        imagePath, // Replace with your actual image path
+                        fit: BoxFit.cover, // Adjust the fit as needed
+                      )
+                    : Container(),
+              ),
             ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                name,
+                style: TextStyle(
+                  fontSize: 4.sp,
+                  fontFamily: 'OverlockSC',
+                ),
+              ),
+            )
           ],
         ),
       ),

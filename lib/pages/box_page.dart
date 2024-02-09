@@ -54,7 +54,11 @@ class BoxPage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text(
           'Burdens',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OverlockSC',
+          ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
@@ -97,7 +101,10 @@ class BoxPage extends HookConsumerWidget {
                   child: const Text(
                     'Lord, I place my burden into Your care as I put it into this box. As long as it is in Your box, I never have to worry about it again.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'OverlockSC',
+                    ),
                   ),
                 )
               ],
@@ -115,9 +122,11 @@ class BoxPage extends HookConsumerWidget {
                     "My Burden Box",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'OverlockSC',
+                    ),
                   )
                 ],
               ),
@@ -170,7 +179,9 @@ class BoxPage extends HookConsumerWidget {
                                     child: Text(
                                       currentBurden.value,
                                       style: const TextStyle(
-                                          fontWeight: FontWeight.w500),
+                                        fontWeight: FontWeight.w500,
+                                        fontFamily: 'OverlockSC',
+                                      ),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -187,12 +198,17 @@ class BoxPage extends HookConsumerWidget {
                 ? Padding(
                     padding: EdgeInsets.all(8.0),
                     child: TextField(
+                      style: TextStyle(
+                        fontFamily: 'OverlockSC',
+                      ),
                       controller: burdenController,
                       onSubmitted: addBurden,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Add a Burden',
-                      ),
+                          border: OutlineInputBorder(),
+                          labelText: 'Add a Burden',
+                          labelStyle: TextStyle(
+                            fontFamily: 'OverlockSC',
+                          )),
                     ),
                   )
                 : Container(),

@@ -33,10 +33,11 @@ class ArmorInfoModal extends StatelessWidget {
                 Text(
                   heading,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 24, // Larger font size
                     fontWeight: FontWeight.bold, // Bold text
-                    color: Colors.black, // Text color
+                    color: Colors.black,
+                    fontFamily: 'OverlockSC',
                   ),
                 ),
                 SizedBox(height: screenHeight * .1), // For spacing
@@ -46,9 +47,10 @@ class ArmorInfoModal extends StatelessWidget {
                     child: Text(
                       infoText,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18, // Larger than normal body text
                         color: Colors.black54,
+                        fontFamily: 'OverlockSC',
                         // Slightly muted color
                       ),
                     ),

@@ -17,7 +17,11 @@ class ActsPage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(
           'ACTS',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OverlockSC',
+          ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
@@ -76,6 +80,9 @@ class ActsPage extends HookConsumerWidget {
                     child: Text(
                       currentText.value,
                       textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'OverlockSC',
+                      ),
                     ),
                   ),
                 ),

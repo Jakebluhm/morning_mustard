@@ -37,7 +37,12 @@ class BurdenModal extends HookConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(burdens.current[index]),
+                      Text(
+                        burdens.current[index],
+                        style: TextStyle(
+                          fontFamily: 'OverlockSC',
+                        ),
+                      ),
                       IconButton(
                           onPressed: () {
                             print('delete verse');

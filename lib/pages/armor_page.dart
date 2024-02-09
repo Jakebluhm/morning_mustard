@@ -41,7 +41,11 @@ class ArmorPage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(
           'Armor',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OverlockSC',
+          ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(

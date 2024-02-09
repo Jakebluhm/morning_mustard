@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'calendar_provider.dart';
+part of 'calendar_entry.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+CalendarEntry _$CalendarEntryFromJson(Map<String, dynamic> json) {
+  return _CalendarEntry.fromJson(json);
+}
+
 /// @nodoc
 mixin _$CalendarEntry {
   String get imagePath => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CalendarEntryCopyWith<CalendarEntry> get copyWith =>
       throw _privateConstructorUsedError;
@@ -112,10 +117,13 @@ class __$$CalendarEntryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CalendarEntryImpl implements _CalendarEntry {
   _$CalendarEntryImpl(
       {required this.imagePath, required this.name, required this.index});
+
+  factory _$CalendarEntryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CalendarEntryImplFromJson(json);
 
   @override
   final String imagePath;
@@ -140,6 +148,7 @@ class _$CalendarEntryImpl implements _CalendarEntry {
             (identical(other.index, index) || other.index == index));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, imagePath, name, index);
 
@@ -148,6 +157,13 @@ class _$CalendarEntryImpl implements _CalendarEntry {
   @pragma('vm:prefer-inline')
   _$$CalendarEntryImplCopyWith<_$CalendarEntryImpl> get copyWith =>
       __$$CalendarEntryImplCopyWithImpl<_$CalendarEntryImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CalendarEntryImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CalendarEntry implements CalendarEntry {
@@ -155,6 +171,9 @@ abstract class _CalendarEntry implements CalendarEntry {
       {required final String imagePath,
       required final String name,
       required final int index}) = _$CalendarEntryImpl;
+
+  factory _CalendarEntry.fromJson(Map<String, dynamic> json) =
+      _$CalendarEntryImpl.fromJson;
 
   @override
   String get imagePath;

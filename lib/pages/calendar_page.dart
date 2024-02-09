@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:morning_mustard/constants/calendar_image_paths.dart';
 import 'package:morning_mustard/constants/calendar_layout_constants.dart';
+import 'package:morning_mustard/providers/calendar_entry.dart';
 import 'package:morning_mustard/providers/calendar_provider.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
 import 'package:morning_mustard/widgets/calendar_entry_widget.dart';
@@ -65,11 +66,15 @@ class CalendarPage extends HookConsumerWidget {
       (index) => Container(
         width: calenderDayWidth.w,
         height: 15.h,
-        decoration: BoxDecoration(color: Colors.deepPurple),
+        decoration: BoxDecoration(color: Color.fromARGB(255, 94, 126, 220)),
         child: Center(
           child: Text(
             days[index],
-            style: TextStyle(color: Colors.white, fontSize: 4.sp),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 4.sp,
+              fontFamily: 'OverlockSC',
+            ),
           ),
         ),
       ),
@@ -82,7 +87,11 @@ class CalendarPage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text(
           'Prayers Today',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OverlockSC',
+          ),
         ),
         backgroundColor: Colors.amber,
         leading: IconButton(
@@ -96,94 +105,98 @@ class CalendarPage extends HookConsumerWidget {
           },
         ),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color.fromRGBO(255, 219, 88, 1.0),
-                Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
-                Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
-              ]),
-        ),
-        child: Center(
-          child: Container(
-            height: ((calenderDayHeight * 4) + 15 + 20).h,
-            width: ((calenderDayWidth * 8) + 12).w,
-            child: Padding(
-              padding: EdgeInsets.all(8.0.h),
-              child: Stack(
-                children: [
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [...daysColumnHeaders],
-                      ),
-                      buildCalendarEntryRow(
-                        entriesSegment: firstRowEntries,
-                        ref: ref,
-                        activeIndex: activeIndex,
-                      ),
-                      buildCalendarEntryRow(
-                        entriesSegment: secondRowEntries,
-                        ref: ref,
-                        activeIndex: activeIndex,
-                      ),
-                      buildCalendarEntryRow(
-                        entriesSegment: thirdRowEntries,
-                        ref: ref,
-                        activeIndex: activeIndex,
-                      ),
-                      buildCalendarEntryRow(
-                        entriesSegment: fourthRowEntries,
-                        ref: ref,
-                        activeIndex: activeIndex,
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    top: (calenderDayHeight * 2) +
-                        17.h, // Positions the container at the bottom of the stack
-                    right: (calenderDayWidth * 7)
-                        .w, // Positions the container to the right of the stack
-                    child: Container(
-                      // Define your container's appearance and contents here
-                      width: calenderDayWidth
-                          .w, // Specify the width of the container
-                      height: (calenderDayHeight.h) *
-                          2, // Specify the height of the container
-                      decoration: BoxDecoration(
-                          color: Colors.blue, // Example color
-                          border: Border.all()),
-                      child: Center(
-                        child: ListView.builder(
-                          itemCount: FaceImages.paths.length,
-                          itemBuilder: (context, index) {
-                            // Generating dummy data for each item
-                            String itemData = '${index + 1}';
+      body: OverflowBox(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromRGBO(255, 219, 88, 1.0),
+                  Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
+                  Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
+                ]),
+          ),
+          child: Center(
+            child: Container(
+              height: ((calenderDayHeight * 4) + 15 + 20).h,
+              width: ((calenderDayWidth * 8) + 12).w,
+              child: Padding(
+                padding: EdgeInsets.all(8.0.h),
+                child: Stack(
+                  children: [
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [...daysColumnHeaders],
+                        ),
+                        buildCalendarEntryRow(
+                          entriesSegment: firstRowEntries,
+                          ref: ref,
+                          activeIndex: activeIndex,
+                        ),
+                        buildCalendarEntryRow(
+                          entriesSegment: secondRowEntries,
+                          ref: ref,
+                          activeIndex: activeIndex,
+                        ),
+                        buildCalendarEntryRow(
+                          entriesSegment: thirdRowEntries,
+                          ref: ref,
+                          activeIndex: activeIndex,
+                        ),
+                        buildCalendarEntryRow(
+                          entriesSegment: fourthRowEntries,
+                          ref: ref,
+                          activeIndex: activeIndex,
+                        ),
+                      ],
+                    ),
+                    Positioned(
+                      top: (calenderDayHeight * 2) +
+                          17.h, // Positions the container at the bottom of the stack
+                      right: (calenderDayWidth * 7)
+                          .w, // Positions the container to the right of the stack
+                      child: Container(
+                        // Define your container's appearance and contents here
+                        width: calenderDayWidth
+                            .w, // Specify the width of the container
+                        height: (calenderDayHeight.h) *
+                            2, // Specify the height of the container
+                        decoration: BoxDecoration(
+                            color: Colors.blue, // Example color
+                            border: Border.all()),
+                        child: Center(
+                          child: ListView.builder(
+                            itemCount: FaceImages.paths.length,
+                            itemBuilder: (context, index) {
+                              // Generating dummy data for each item
+                              String itemData = '${index + 1}';
 
-                            return GestureDetector(
-                              onTap: () =>
-                                  caledarEntriesNotifier.updateImagePath(
-                                      activeIndexNotifier.getActiveIndex(),
-                                      FaceImages.paths[index]),
-                              child: Container(
-                                decoration: BoxDecoration(border: Border.all()),
-                                child: Image.asset(
-                                  FaceImages.paths[
-                                      index], // Replace with your actual image path
-                                  fit: BoxFit.cover, // Adjust the fit as needed
+                              return GestureDetector(
+                                onTap: () =>
+                                    caledarEntriesNotifier.updateImagePath(
+                                        activeIndexNotifier.getActiveIndex(),
+                                        FaceImages.paths[index]),
+                                child: Container(
+                                  decoration:
+                                      BoxDecoration(border: Border.all()),
+                                  child: Image.asset(
+                                    FaceImages.paths[
+                                        index], // Replace with your actual image path
+                                    fit: BoxFit
+                                        .cover, // Adjust the fit as needed
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -204,8 +217,6 @@ class CalendarPage extends HookConsumerWidget {
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
     ]);
   }
 
@@ -223,7 +234,12 @@ class CalendarPage extends HookConsumerWidget {
       color: Colors.lightBlueAccent,
       child: Column(
         children: [
-          Text(day),
+          Text(
+            day,
+            style: TextStyle(
+              fontFamily: 'OverlockSC',
+            ),
+          ),
           // Add icons or images for people here
         ],
       ),
