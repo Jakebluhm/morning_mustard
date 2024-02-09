@@ -126,6 +126,8 @@ flutter:
     - lib/assets/TreasureBox/Close box.imageset/Close box.png
     - lib/assets/TreasureBox/box_closed.png
     - lib/assets/TreasureBox/box_opened.png
+    - lib/assets/Faces/
+    - lib/assets/Objects/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

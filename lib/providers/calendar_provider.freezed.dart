@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CalendarEntry {
   String get imagePath => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,7 @@ abstract class $CalendarEntryCopyWith<$Res> {
           CalendarEntry value, $Res Function(CalendarEntry) then) =
       _$CalendarEntryCopyWithImpl<$Res, CalendarEntry>;
   @useResult
-  $Res call({String imagePath, int index});
+  $Res call({String imagePath, String name, int index});
 }
 
 /// @nodoc
@@ -47,12 +48,17 @@ class _$CalendarEntryCopyWithImpl<$Res, $Val extends CalendarEntry>
   @override
   $Res call({
     Object? imagePath = null,
+    Object? name = null,
     Object? index = null,
   }) {
     return _then(_value.copyWith(
       imagePath: null == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       index: null == index
           ? _value.index
@@ -70,7 +76,7 @@ abstract class _$$CalendarEntryImplCopyWith<$Res>
       __$$CalendarEntryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String imagePath, int index});
+  $Res call({String imagePath, String name, int index});
 }
 
 /// @nodoc
@@ -85,12 +91,17 @@ class __$$CalendarEntryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? imagePath = null,
+    Object? name = null,
     Object? index = null,
   }) {
     return _then(_$CalendarEntryImpl(
       imagePath: null == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       index: null == index
           ? _value.index
@@ -103,16 +114,19 @@ class __$$CalendarEntryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CalendarEntryImpl implements _CalendarEntry {
-  _$CalendarEntryImpl({required this.imagePath, required this.index});
+  _$CalendarEntryImpl(
+      {required this.imagePath, required this.name, required this.index});
 
   @override
   final String imagePath;
+  @override
+  final String name;
   @override
   final int index;
 
   @override
   String toString() {
-    return 'CalendarEntry(imagePath: $imagePath, index: $index)';
+    return 'CalendarEntry(imagePath: $imagePath, name: $name, index: $index)';
   }
 
   @override
@@ -122,11 +136,12 @@ class _$CalendarEntryImpl implements _CalendarEntry {
             other is _$CalendarEntryImpl &&
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imagePath, index);
+  int get hashCode => Object.hash(runtimeType, imagePath, name, index);
 
   @JsonKey(ignore: true)
   @override
@@ -138,10 +153,13 @@ class _$CalendarEntryImpl implements _CalendarEntry {
 abstract class _CalendarEntry implements CalendarEntry {
   factory _CalendarEntry(
       {required final String imagePath,
+      required final String name,
       required final int index}) = _$CalendarEntryImpl;
 
   @override
   String get imagePath;
+  @override
+  String get name;
   @override
   int get index;
   @override

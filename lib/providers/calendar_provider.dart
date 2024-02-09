@@ -6,19 +6,42 @@ part 'calendar_provider.freezed.dart';
 class CalendarEntry with _$CalendarEntry {
   factory CalendarEntry({
     required String imagePath,
+    required String name,
     required int index,
   }) = _CalendarEntry;
 }
 
-// Hard-coded list of CalendarEntry items
-final calendarEntriesProvider = Provider<List<CalendarEntry>>((ref) {
-  return List.generate(
-      30,
-      (index) => CalendarEntry(
-            imagePath: '', // Example path, adjust as needed
-            index: index,
-          ));
+final calendarEntriesProvider =
+    StateNotifierProvider<CalendarEntryListNotifier, List<CalendarEntry>>(
+        (ref) {
+  return CalendarEntryListNotifier();
 });
+
+// StateNotifier that manages a list of CalendarEntry
+class CalendarEntryListNotifier extends StateNotifier<List<CalendarEntry>> {
+  CalendarEntryListNotifier()
+      : super(List.generate(
+            30,
+            (index) => CalendarEntry(
+                  imagePath: '', // Initial imagePath
+                  name: '',
+                  index: index,
+                )));
+
+  void updateImagePath(int index, String newPath) {
+    state = [
+      for (int i = 0; i < state.length; i++)
+        if (i == index) state[i].copyWith(imagePath: newPath) else state[i],
+    ];
+  }
+
+  void updateName(int index, String name) {
+    state = [
+      for (int i = 0; i < state.length; i++)
+        if (i == index) state[i].copyWith(name: name) else state[i],
+    ];
+  }
+}
 
 class ActiveIndexNotifier extends StateNotifier<int> {
   ActiveIndexNotifier()

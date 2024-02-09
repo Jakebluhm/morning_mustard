@@ -1,2 +1,2 @@
-const double calenderDayWidth = 44;
-const double calenderDayHeight = 68;
+const double calenderDayWidth = 43;
+const double calenderDayHeight = 67;

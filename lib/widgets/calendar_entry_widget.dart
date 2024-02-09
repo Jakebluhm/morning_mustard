@@ -6,6 +6,7 @@ import 'package:morning_mustard/providers/calendar_provider.dart';
 
 class CalendarEntryWidget extends HookConsumerWidget {
   final String imagePath;
+  final String name;
   final int index;
   final bool isActive;
   final VoidCallback onTap;
@@ -13,6 +14,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
   const CalendarEntryWidget(
       {Key? key,
       required this.imagePath,
+      required this.name,
       required this.index,
       required this.onTap,
       required this.isActive})
@@ -31,6 +33,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
         width: calenderDayWidth.w,
         height: calenderDayHeight.h,
         decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.75),
             border: Border.all(color: isActive ? Colors.red : Colors.black)),
         child: Stack(
           children: [
@@ -51,10 +54,12 @@ class CalendarEntryWidget extends HookConsumerWidget {
               ),
             ),
             Center(
-              child: Image.asset(
-                'lib/assets/Soilder/body parts/waist.imageset/waist.png', // Replace with your actual image path
-                fit: BoxFit.cover, // Adjust the fit as needed
-              ),
+              child: imagePath.isNotEmpty
+                  ? Image.asset(
+                      imagePath, // Replace with your actual image path
+                      fit: BoxFit.cover, // Adjust the fit as needed
+                    )
+                  : Container(),
             ),
           ],
         ),
