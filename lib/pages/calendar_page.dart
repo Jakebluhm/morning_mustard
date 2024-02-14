@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
@@ -50,6 +51,8 @@ class CalendarPage extends HookConsumerWidget {
     final activeIndexNotifier = ref.watch(activeIndexProvider.notifier);
     final activeIndex = ref.watch(activeIndexProvider);
 
+    final activeDayInedex = useState(1);
+
     // Assuming calendarEntries is a list with at least 16 items
     final firstRowEntries = caledarEntries.sublist(0, 8);
     final secondRowEntries = caledarEntries.sublist(8, 16);
@@ -69,17 +72,24 @@ class CalendarPage extends HookConsumerWidget {
 
     List<Widget> daysColumnHeaders = List<Widget>.generate(
       days.length,
-      (index) => Container(
-        width: calenderDayWidth.w,
-        height: 15.h,
-        decoration: BoxDecoration(color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 1)),
-        child: Center(
-          child: Text(
-            days[index],
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 4.sp,
-              fontFamily: 'Kalam',
+      (index) => GestureDetector(
+        onTap: () {
+          activeDayInedex.value = index;
+        },
+        child: Container(
+          width: calenderDayWidth.w,
+          height: 15.h,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 1),
+          ),
+          child: Center(
+            child: Text(
+              days[index],
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 4.sp,
+                fontFamily: 'Kalam',
+              ),
             ),
           ),
         ),
@@ -158,6 +168,25 @@ class CalendarPage extends HookConsumerWidget {
                           activeIndex: activeIndex,
                         ),
                       ],
+                    ),
+                    Positioned(
+                      top: 15
+                          .h, // Positions the container at the bottom of the stack
+                      right: (calenderDayWidth * (7 - activeDayInedex.value))
+                          .w, // Positions the container to the right of the stack
+                      child: IgnorePointer(
+                        child: Container(
+                          // Define your container's appearance and contents here
+                          width: calenderDayWidth
+                              .w, // Specify the width of the container
+                          height: activeDayInedex.value == 0
+                              ? (calenderDayHeight.h) * 2
+                              : (calenderDayHeight.h) *
+                                  4, // Specify the height of the container
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.red, width: 3)),
+                        ),
+                      ),
                     ),
                     Positioned(
                       top: (calenderDayHeight * 2) +
