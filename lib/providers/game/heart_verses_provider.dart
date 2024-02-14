@@ -35,7 +35,11 @@ class VersesNotifier extends StateNotifier<Verses> {
 
   void deleteVerse(String verse) async {
     final prefs = await SharedPreferences.getInstance();
-    final updatedList = state.current.where((v) => v != verse).toList();
+    final index = state.current.indexOf(verse);
+    final updatedList = List.of(state.current); // Create a copy to modify
+    if (index != -1) {
+      updatedList.removeAt(index); // Removes the first occurrence of `verse`
+    }
     await prefs.setStringList('verses', updatedList);
     state = state.copyWith(current: updatedList);
   }

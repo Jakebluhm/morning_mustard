@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:morning_mustard/constants/app_info_text.dart';
 
 class ArmorInfoModal extends StatelessWidget {
@@ -33,11 +34,11 @@ class ArmorInfoModal extends StatelessWidget {
                 Text(
                   heading,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 24, // Larger font size
+                  style: TextStyle(
+                    fontSize: 22.sp, // Larger font size
                     fontWeight: FontWeight.bold, // Bold text
                     color: Colors.black,
-                    fontFamily: 'OverlockSC',
+                    fontFamily: 'Kalam',
                   ),
                 ),
                 SizedBox(height: screenHeight * .1), // For spacing
@@ -47,10 +48,10 @@ class ArmorInfoModal extends StatelessWidget {
                     child: Text(
                       infoText,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 18, // Larger than normal body text
+                      style: TextStyle(
+                        fontSize: 16.sp, // Larger than normal body text
                         color: Colors.black54,
-                        fontFamily: 'OverlockSC',
+                        fontFamily: 'Kalam',
                         // Slightly muted color
                       ),
                     ),

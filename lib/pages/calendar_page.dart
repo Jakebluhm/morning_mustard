@@ -26,6 +26,12 @@ class CalendarPage extends HookConsumerWidget {
           name: entry.name,
           index: entry.index,
           onTap: () {
+            if (entry.index ==
+                ref.read(activeIndexProvider.notifier).getActiveIndex()!) {
+              ref.read(activeIndexProvider.notifier).setActiveIndex(-1);
+              return;
+            }
+
             ref.read(activeIndexProvider.notifier).setActiveIndex(entry.index);
             print("Setting active index to ${entry.index}");
           },
@@ -66,14 +72,14 @@ class CalendarPage extends HookConsumerWidget {
       (index) => Container(
         width: calenderDayWidth.w,
         height: 15.h,
-        decoration: BoxDecoration(color: Color.fromARGB(255, 94, 126, 220)),
+        decoration: BoxDecoration(color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 1)),
         child: Center(
           child: Text(
             days[index],
             style: TextStyle(
               color: Colors.white,
               fontSize: 4.sp,
-              fontFamily: 'OverlockSC',
+              fontFamily: 'Kalam',
             ),
           ),
         ),
@@ -90,7 +96,7 @@ class CalendarPage extends HookConsumerWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontFamily: 'OverlockSC',
+            fontFamily: 'Kalam',
           ),
         ),
         backgroundColor: Colors.amber,
@@ -165,7 +171,7 @@ class CalendarPage extends HookConsumerWidget {
                         height: (calenderDayHeight.h) *
                             2, // Specify the height of the container
                         decoration: BoxDecoration(
-                            color: Colors.blue, // Example color
+                            color: Colors.amber, // Example color
                             border: Border.all()),
                         child: Center(
                           child: ListView.builder(
@@ -175,10 +181,14 @@ class CalendarPage extends HookConsumerWidget {
                               String itemData = '${index + 1}';
 
                               return GestureDetector(
-                                onTap: () =>
+                                onTap: () {
+                                  if (activeIndexNotifier.getActiveIndex() !=
+                                      -1) {
                                     caledarEntriesNotifier.updateImagePath(
-                                        activeIndexNotifier.getActiveIndex(),
-                                        FaceImages.paths[index]),
+                                        activeIndexNotifier.getActiveIndex()!,
+                                        FaceImages.paths[index]);
+                                  }
+                                },
                                 child: Container(
                                   decoration:
                                       BoxDecoration(border: Border.all()),
@@ -237,7 +247,7 @@ class CalendarPage extends HookConsumerWidget {
           Text(
             day,
             style: TextStyle(
-              fontFamily: 'OverlockSC',
+              fontFamily: 'Kalam',
             ),
           ),
           // Add icons or images for people here

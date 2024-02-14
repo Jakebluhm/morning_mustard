@@ -142,9 +142,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: OverlockSC
+    - family: Kalam
       fonts:
-        - asset: lib/assets/fonts/OverlockSC-Regular.ttf
+        - asset: lib/assets/fonts/Kalam-Bold.ttf
+        - asset: lib/assets/fonts/Kalam-Light.ttf
+        - asset: lib/assets/fonts/Kalam-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

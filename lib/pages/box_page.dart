@@ -57,7 +57,7 @@ class BoxPage extends HookConsumerWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontFamily: 'OverlockSC',
+            fontFamily: 'Kalam',
           ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
@@ -103,7 +103,7 @@ class BoxPage extends HookConsumerWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontFamily: 'OverlockSC',
+                      fontFamily: 'Kalam',
                     ),
                   ),
                 )
@@ -125,7 +125,7 @@ class BoxPage extends HookConsumerWidget {
                       color: Colors.white,
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'OverlockSC',
+                      fontFamily: 'Kalam',
                     ),
                   )
                 ],
@@ -180,7 +180,7 @@ class BoxPage extends HookConsumerWidget {
                                       currentBurden.value,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w500,
-                                        fontFamily: 'OverlockSC',
+                                        fontFamily: 'Kalam',
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
@@ -199,7 +199,7 @@ class BoxPage extends HookConsumerWidget {
                     padding: EdgeInsets.all(8.0),
                     child: TextField(
                       style: TextStyle(
-                        fontFamily: 'OverlockSC',
+                        fontFamily: 'Kalam',
                       ),
                       controller: burdenController,
                       onSubmitted: addBurden,
@@ -207,7 +207,7 @@ class BoxPage extends HookConsumerWidget {
                           border: OutlineInputBorder(),
                           labelText: 'Add a Burden',
                           labelStyle: TextStyle(
-                            fontFamily: 'OverlockSC',
+                            fontFamily: 'Kalam',
                           )),
                     ),
                   )

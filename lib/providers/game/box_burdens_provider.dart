@@ -38,7 +38,11 @@ class BurdensNotifier extends StateNotifier<Burdens> {
   void deleteBurden(String burden) async {
     print("Deleting burden: $burden");
     final prefs = await SharedPreferences.getInstance();
-    final updatedList = state.current.where((v) => v != burden).toList();
+    final index = state.current.indexOf(burden);
+    final updatedList = List.of(state.current); // Create a copy to modify
+    if (index != -1) {
+      updatedList.removeAt(index); // Removes the first occurrence of `verse`
+    }
     await prefs.setStringList('burdens', updatedList);
     state = state.copyWith(current: updatedList);
   }

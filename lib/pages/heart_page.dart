@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/providers/game/heart_verses_provider.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
@@ -55,7 +56,7 @@ class HeartPage extends HookConsumerWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontFamily: 'OverlockSC',
+            fontFamily: 'Kalam',
           ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
@@ -81,8 +82,10 @@ class HeartPage extends HookConsumerWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.15),
+              padding: EdgeInsets.only(
+                  top: 10.h,
+                  right: MediaQuery.of(context).size.width * 0.15,
+                  left: MediaQuery.of(context).size.width * 0.15),
               child: Image.asset(
                 'lib/assets/heart/Thy Word.imageset/heart_heading.png',
                 fit: BoxFit.contain,
@@ -109,7 +112,7 @@ class HeartPage extends HookConsumerWidget {
                             currentVerse.value,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontFamily: 'OverlockSC',
+                              fontFamily: 'Kalam',
                             ),
                           )
                         : Container(),
@@ -121,7 +124,7 @@ class HeartPage extends HookConsumerWidget {
               padding: EdgeInsets.all(8.0),
               child: TextField(
                 style: TextStyle(
-                  fontFamily: 'OverlockSC',
+                  fontFamily: 'Kalam',
                 ),
                 controller: verseController,
                 onSubmitted: addVerse,

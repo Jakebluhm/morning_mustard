@@ -70,7 +70,7 @@ class CalendarEntryListNotifier extends StateNotifier<List<CalendarEntry>> {
 
 class ActiveIndexNotifier extends StateNotifier<int> {
   ActiveIndexNotifier()
-      : super(0); // Initial state is `null`, indicating no active index
+      : super(-1); // Initial state is `null`, indicating no active index
 
   void setActiveIndex(int index) {
     print('Active index is $index');

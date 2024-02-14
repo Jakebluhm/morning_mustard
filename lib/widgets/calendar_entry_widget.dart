@@ -56,15 +56,15 @@ class CalendarEntryWidget extends HookConsumerWidget {
                     context: context,
                     builder: (context) => SingleChildScrollView(
                       child: AlertDialog(
-                        title: Text(
+                        title: const Text(
                           'Edit Name',
                           style: TextStyle(
-                            fontFamily: 'OverlockSC',
+                            fontFamily: 'Kalam',
                           ),
                         ),
                         content: TextField(
                           style: TextStyle(
-                            fontFamily: 'OverlockSC',
+                            fontFamily: 'Kalam',
                           ),
                           controller: controller,
                           decoration:
@@ -75,7 +75,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
                             child: Text(
                               'Cancel',
                               style: TextStyle(
-                                fontFamily: 'OverlockSC',
+                                fontFamily: 'Kalam',
                               ),
                             ),
                             onPressed: () => Navigator.of(context).pop(),
@@ -84,7 +84,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
                             child: Text(
                               'Save',
                               style: TextStyle(
-                                fontFamily: 'OverlockSC',
+                                fontFamily: 'Kalam',
                               ),
                             ),
                             onPressed: () =>
@@ -104,7 +104,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 12.0.h),
+              padding: EdgeInsets.only(bottom: 14.0.h),
               child: Center(
                 child: imagePath.isNotEmpty
                     ? Image.asset(
@@ -120,7 +120,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
                 name,
                 style: TextStyle(
                   fontSize: 4.sp,
-                  fontFamily: 'OverlockSC',
+                  fontFamily: 'Kalam',
                 ),
               ),
             )
