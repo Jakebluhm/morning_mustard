@@ -147,6 +147,16 @@ flutter:
         - asset: lib/assets/fonts/Kalam-Bold.ttf
         - asset: lib/assets/fonts/Kalam-Light.ttf
         - asset: lib/assets/fonts/Kalam-Regular.ttf
+    - family: PlaypenSans
+      fonts:
+        - asset: lib/assets/fonts/PlaypenSans-Bold.ttf
+        - asset: lib/assets/fonts/PlaypenSans-ExtraBold.ttf
+        - asset: lib/assets/fonts/PlaypenSans-ExtraLight.ttf
+        - asset: lib/assets/fonts/PlaypenSans-Light.ttf
+        - asset: lib/assets/fonts/PlaypenSans-Medium.ttf
+        - asset: lib/assets/fonts/PlaypenSans-Regular.ttf
+        - asset: lib/assets/fonts/PlaypenSans-SemiBold.ttf
+        - asset: lib/assets/fonts/PlaypenSans-Thin.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

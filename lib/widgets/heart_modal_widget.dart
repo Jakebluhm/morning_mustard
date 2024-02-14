@@ -40,7 +40,7 @@ class HeartModal extends HookConsumerWidget {
                       Text(
                         verses.current[index],
                         style: TextStyle(
-                          fontFamily: 'Kalam',
+                          fontFamily: 'PlaypenSans',
                         ),
                       ),
                       IconButton(

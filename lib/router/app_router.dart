@@ -20,7 +20,7 @@ class AppRouter {
               child: Text(
                 'Error',
                 style: TextStyle(
-                  fontFamily: 'Kalam',
+                  fontFamily: 'PlaypenSans',
                 ),
               ),
             ),

@@ -21,7 +21,7 @@ class ThoughtsPage extends HookConsumerWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Kalam',
+            fontFamily: 'PlaypenSans',
           ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
@@ -69,7 +69,7 @@ class ThoughtsPage extends HookConsumerWidget {
                       right: screenWidth * .15, left: screenWidth * .15),
                   child: TextField(
                     style: TextStyle(
-                      fontFamily: 'Kalam',
+                      fontFamily: 'PlaypenSans',
                     ),
                     onChanged: (newText) {
                       textState.value = newText; // Updating the state

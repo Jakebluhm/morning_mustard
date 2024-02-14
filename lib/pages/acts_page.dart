@@ -21,7 +21,7 @@ class ActsPage extends HookConsumerWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Kalam',
+            fontFamily: 'PlaypenSans',
           ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
@@ -83,7 +83,7 @@ class ActsPage extends HookConsumerWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 8.sp,
-                          fontFamily: 'Kalam',
+                          fontFamily: 'PlaypenSans',
                           fontWeight: FontWeight.bold),
                     ),
                   ),

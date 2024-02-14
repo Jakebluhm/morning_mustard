@@ -26,7 +26,7 @@ class AppInfoModal extends StatelessWidget {
                     child: Text(
                       appInfoText,
                       style: TextStyle(
-                        fontFamily: 'Kalam',
+                        fontFamily: 'PlaypenSans',
                       ),
                     ),
                   ),

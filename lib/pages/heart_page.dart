@@ -56,7 +56,7 @@ class HeartPage extends HookConsumerWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Kalam',
+            fontFamily: 'PlaypenSans',
           ),
         ),
         backgroundColor: Color.fromRGBO(255, 205, 88, 1),
@@ -112,7 +112,7 @@ class HeartPage extends HookConsumerWidget {
                             currentVerse.value,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontFamily: 'Kalam',
+                              fontFamily: 'PlaypenSans',
                             ),
                           )
                         : Container(),
@@ -124,7 +124,7 @@ class HeartPage extends HookConsumerWidget {
               padding: EdgeInsets.all(8.0),
               child: TextField(
                 style: TextStyle(
-                  fontFamily: 'Kalam',
+                  fontFamily: 'PlaypenSans',
                 ),
                 controller: verseController,
                 onSubmitted: addVerse,

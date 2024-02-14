@@ -40,7 +40,7 @@ class BurdenModal extends HookConsumerWidget {
                       Text(
                         burdens.current[index],
                         style: TextStyle(
-                          fontFamily: 'Kalam',
+                          fontFamily: 'PlaypenSans',
                         ),
                       ),
                       IconButton(

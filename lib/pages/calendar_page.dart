@@ -88,7 +88,7 @@ class CalendarPage extends HookConsumerWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 4.sp,
-                fontFamily: 'Kalam',
+                fontFamily: 'PlaypenSans',
               ),
             ),
           ),
@@ -106,7 +106,7 @@ class CalendarPage extends HookConsumerWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Kalam',
+            fontFamily: 'PlaypenSans',
           ),
         ),
         backgroundColor: Colors.amber,
@@ -276,7 +276,7 @@ class CalendarPage extends HookConsumerWidget {
           Text(
             day,
             style: TextStyle(
-              fontFamily: 'Kalam',
+              fontFamily: 'PlaypenSans',
             ),
           ),
           // Add icons or images for people here

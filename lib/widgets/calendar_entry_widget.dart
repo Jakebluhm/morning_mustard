@@ -59,12 +59,12 @@ class CalendarEntryWidget extends HookConsumerWidget {
                         title: const Text(
                           'Edit Name',
                           style: TextStyle(
-                            fontFamily: 'Kalam',
+                            fontFamily: 'PlaypenSans',
                           ),
                         ),
                         content: TextField(
                           style: TextStyle(
-                            fontFamily: 'Kalam',
+                            fontFamily: 'PlaypenSans',
                           ),
                           controller: controller,
                           decoration:
@@ -75,7 +75,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
                             child: Text(
                               'Cancel',
                               style: TextStyle(
-                                fontFamily: 'Kalam',
+                                fontFamily: 'PlaypenSans',
                               ),
                             ),
                             onPressed: () => Navigator.of(context).pop(),
@@ -84,7 +84,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
                             child: Text(
                               'Save',
                               style: TextStyle(
-                                fontFamily: 'Kalam',
+                                fontFamily: 'PlaypenSans',
                               ),
                             ),
                             onPressed: () =>
@@ -120,7 +120,7 @@ class CalendarEntryWidget extends HookConsumerWidget {
                 name,
                 style: TextStyle(
                   fontSize: 4.sp,
-                  fontFamily: 'Kalam',
+                  fontFamily: 'PlaypenSans',
                 ),
               ),
             )
