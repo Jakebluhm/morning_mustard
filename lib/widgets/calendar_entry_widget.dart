@@ -30,24 +30,25 @@ class CalendarEntryWidget extends HookConsumerWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: calenderDayWidth.w,
-        height: calenderDayHeight.h,
+        width: AppSizes.calendarDayWidth,
+        height: AppSizes.calendarDayHeight,
         decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.75),
             border: Border.all(color: isActive ? Colors.red : Colors.black)),
         child: Stack(
           children: [
             Positioned(
-              top: 0,
-              right: 0,
-              child: IconButton(
-                constraints: BoxConstraints(),
-                padding: EdgeInsets.all(0.0),
-                icon: Icon(
+              top: 5.h,
+              right: 3.w,
+              child: InkWell(
+                // alignment: Alignment.topRight,
+                // constraints: BoxConstraints(),
+                // padding: EdgeInsets.all(0.0),
+                child: Icon(
                   Icons.info_outline,
                   size: 5.w,
                 ), // Replace with your desired icon
-                onPressed: () async {
+                onTap: () async {
                   // Create a TextEditingController
                   final TextEditingController controller =
                       TextEditingController();

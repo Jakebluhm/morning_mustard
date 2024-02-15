@@ -46,6 +46,9 @@ class CalendarPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+
+    final double daysHeaderHeight = 15.h;
+
     final caledarEntries = ref.watch(calendarEntriesProvider);
     final caledarEntriesNotifier = ref.watch(calendarEntriesProvider.notifier);
     final activeIndexNotifier = ref.watch(activeIndexProvider.notifier);
@@ -77,8 +80,8 @@ class CalendarPage extends HookConsumerWidget {
           activeDayInedex.value = index;
         },
         child: Container(
-          width: calenderDayWidth.w,
-          height: 15.h,
+          width: AppSizes.calendarDayWidth,
+          height: daysHeaderHeight,
           decoration: BoxDecoration(
             color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 1),
           ),
@@ -135,8 +138,8 @@ class CalendarPage extends HookConsumerWidget {
           ),
           child: Center(
             child: Container(
-              height: ((calenderDayHeight * 4) + 15 + 20).h,
-              width: ((calenderDayWidth * 8) + 12).w,
+              height: ((AppSizes.calendarDayHeight * 4) + 15 + 20.h),
+              width: ((AppSizes.calendarDayWidth * 8) + 12.w),
               child: Padding(
                 padding: EdgeInsets.all(8.0.h),
                 child: Stack(
@@ -170,18 +173,20 @@ class CalendarPage extends HookConsumerWidget {
                       ],
                     ),
                     Positioned(
-                      top: 15
-                          .h, // Positions the container at the bottom of the stack
-                      right: (calenderDayWidth * (7 - activeDayInedex.value))
-                          .w, // Positions the container to the right of the stack
+                      top:
+                          daysHeaderHeight, // Positions the container at the bottom of the stack
+                      right: (AppSizes.calendarDayWidth *
+                          (7 -
+                              activeDayInedex
+                                  .value)), // Positions the container to the right of the stack
                       child: IgnorePointer(
                         child: Container(
                           // Define your container's appearance and contents here
-                          width: calenderDayWidth
-                              .w, // Specify the width of the container
+                          width: AppSizes
+                              .calendarDayWidth, // Specify the width of the container
                           height: activeDayInedex.value == 0
-                              ? (calenderDayHeight.h) * 2
-                              : (calenderDayHeight.h) *
+                              ? (AppSizes.calendarDayHeight) * 2
+                              : (AppSizes.calendarDayHeight) *
                                   4, // Specify the height of the container
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.red, width: 3)),
@@ -189,15 +194,15 @@ class CalendarPage extends HookConsumerWidget {
                       ),
                     ),
                     Positioned(
-                      top: (calenderDayHeight * 2) +
-                          17.h, // Positions the container at the bottom of the stack
-                      right: (calenderDayWidth * 7)
-                          .w, // Positions the container to the right of the stack
+                      top: (AppSizes.calendarDayHeight * 2) +
+                          daysHeaderHeight, // Positions the container at the bottom of the stack
+                      right: (AppSizes.calendarDayWidth *
+                          7), // Positions the container to the right of the stack
                       child: Container(
                         // Define your container's appearance and contents here
-                        width: calenderDayWidth
-                            .w, // Specify the width of the container
-                        height: (calenderDayHeight.h) *
+                        width: AppSizes
+                            .calendarDayWidth, // Specify the width of the container
+                        height: (AppSizes.calendarDayHeight) *
                             2, // Specify the height of the container
                         decoration: BoxDecoration(
                             color: Colors.amber, // Example color

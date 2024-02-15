@@ -66,7 +66,7 @@ class ActsPage extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(150),
               child: Container(
                 width: screenWidth * 0.95,
-                height: screenHeight * 0.2,
+                height: 150.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(150),
                   color: Colors.white,
@@ -77,12 +77,13 @@ class ActsPage extends HookConsumerWidget {
                 ),
                 child: Center(
                   child: Padding(
-                    padding: EdgeInsets.all(screenWidth * 0.02),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 40.w, vertical: 10.h),
                     child: Text(
                       currentText.value,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 8.sp,
+                          fontSize: 12.spMin,
                           fontFamily: 'PlaypenSans',
                           fontWeight: FontWeight.bold),
                     ),
