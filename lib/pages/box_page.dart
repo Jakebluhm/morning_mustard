@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/providers/game/box_burdens_provider.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
@@ -98,12 +99,13 @@ class BoxPage extends HookConsumerWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.06),
-                  child: const Text(
+                  child: Text(
                     'Lord, I place my burden into Your care as I put it into this box. As long as it is in Your box, I never have to worry about it again.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
+                      fontSize: 12.sp,
                       fontFamily: 'PlaypenSans',
                     ),
                   ),
@@ -111,7 +113,10 @@ class BoxPage extends HookConsumerWidget {
               ],
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.15),
+              padding: EdgeInsets.only(
+                  top: 25.h,
+                  left: screenWidth * 0.15,
+                  right: screenWidth * 0.15),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -119,12 +124,12 @@ class BoxPage extends HookConsumerWidget {
                     'lib/assets/TreasureBox/Shape 1.imageset/Shape 1.png',
                     fit: BoxFit.contain,
                   ),
-                  const Text(
+                  Text(
                     "My Burden Box",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 24.0,
+                      fontSize: 22.0.sp,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'PlaypenSans',
                     ),

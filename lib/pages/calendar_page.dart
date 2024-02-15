@@ -103,25 +103,30 @@ class CalendarPage extends HookConsumerWidget {
     _setLandscapeOrientation();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Prayers Today',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'PlaypenSans',
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(25.0),
+        child: AppBar(
+          title: Text(
+            'Prayers Today',
+            style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'PlaypenSans',
+                fontSize: 7.5.sp),
           ),
-        ),
-        backgroundColor: Colors.amber,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () async {
-            // Reset orientation when leaving the page
-            await _resetOrientation();
-            // This line assumes you have a NavigationService set up as part of your app
-            ref.navigationService.goToMenuPage();
-            debugPrint("Left Icon button pressed!");
-          },
+          backgroundColor: Colors.amber,
+          leading: IconButton(
+            constraints: BoxConstraints(),
+            padding: EdgeInsets.all(0.0),
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () async {
+              // Reset orientation when leaving the page
+              await _resetOrientation();
+              // This line assumes you have a NavigationService set up as part of your app
+              ref.navigationService.goToMenuPage();
+              debugPrint("Left Icon button pressed!");
+            },
+          ),
         ),
       ),
       body: OverflowBox(

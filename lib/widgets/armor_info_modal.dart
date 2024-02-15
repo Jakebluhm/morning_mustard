@@ -50,6 +50,7 @@ class ArmorInfoModal extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14.sp, // Larger than normal body text
+                        fontWeight: FontWeight.bold,
                         color: Colors.black54,
                         fontFamily: 'PlaypenSans',
                         // Slightly muted color

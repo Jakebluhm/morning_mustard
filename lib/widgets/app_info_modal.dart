@@ -25,9 +25,10 @@ class AppInfoModal extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Text(
                       appInfoText,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontFamily: 'PlaypenSans',
-                      ),
+                          fontFamily: 'PlaypenSans',
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
