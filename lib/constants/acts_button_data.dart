@@ -31,7 +31,7 @@ List<ActsButtonItem> actsItems = [
   ActsButtonItem(
       imagePath: 'lib/assets/ACTS/ic_c_side.imageset/ic_c_side.png',
       text:
-          "Have I been impatient, or rude? Am I envious, boasting, or prideful? Am I disrespectful or condescending? Am I self-seeking, easily angered, or unforgiving? Do I delight in evil and rejoice in lies? Am I cowardly when others are being harmed, am I haughty or fickle?\nThis is very important, for it keeps me humble before the cross!"),
+          "Have I been impatient, or rude? Am I envious, boasting, or prideful? Am I disrespectful or condescending? Am I self-seeking, easily angered, or unforgiving? Do I delight in evil and rejoice in lies? Am I cowardly when others are being harmed, am I haughty or fickle? This is very important, for it keeps me humble before the cross!"),
   ActsButtonItem(
       imagePath: 'lib/assets/ACTS/ic_t_side.imageset/ic_t_side.png',
       text:
