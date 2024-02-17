@@ -29,6 +29,7 @@ class HeartPage extends HookConsumerWidget {
         VersesNotifier.addVerse(verse);
         currentVerse.value = verse;
         verseController.clear();
+        showText.value = true;
       }
     }
 
@@ -94,11 +95,7 @@ class HeartPage extends HookConsumerWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  if (showText.value) {
-                    onInfoPress(context);
-                  } else {
-                    showText.value = true;
-                  }
+                  onInfoPress(context);
                 },
                 child: Stack(
                   alignment: Alignment.center,

@@ -52,7 +52,7 @@ class ArmorInfoModal extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black54,
+                          color: Colors.black,
                           fontFamily: 'PlaypenSans',
                         ),
                       ),
