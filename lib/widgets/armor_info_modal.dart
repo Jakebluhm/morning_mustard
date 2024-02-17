@@ -25,40 +25,42 @@ class ArmorInfoModal extends StatelessWidget {
         children: [
           Container(
             width: screenWidth,
-            height: screenHeight * 0.6, // Adjust this to your desired height
             padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                SizedBox(height: screenHeight * .02), // For spacing
+            child: Container(
+              child: Column(
+                mainAxisSize: MainAxisSize
+                    .min, // Make the column take up only needed space
+                children: [
+                  SizedBox(height: screenHeight * .02), // For spacing
 
-                Text(
-                  heading,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20.sp, // Larger font size
-                    fontWeight: FontWeight.bold, // Bold text
-                    color: Colors.black,
-                    fontFamily: 'PlaypenSans',
+                  Text(
+                    heading,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontFamily: 'PlaypenSans',
+                    ),
                   ),
-                ),
-                SizedBox(height: screenHeight * .1), // For spacing
-                Expanded(
-                  child: SingleChildScrollView(
-                    // Styling for body text
-                    child: Text(
-                      infoText,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14.sp, // Larger than normal body text
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
-                        fontFamily: 'PlaypenSans',
-                        // Slightly muted color
+                  SizedBox(height: screenHeight * .05), // For spacing
+                  Flexible(
+                    child: SingleChildScrollView(
+                      child: Text(
+                        infoText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54,
+                          fontFamily: 'PlaypenSans',
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: screenHeight * .05), // For spacing
+                ],
+              ),
             ),
           ),
           Positioned(

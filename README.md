@@ -1,12 +1,8 @@
 # morning_mustard
 
-A new Flutter project.
+Morning Mustartd is an existing iOS app I am re-creating to be a cross platform app for an UpWork Client
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
