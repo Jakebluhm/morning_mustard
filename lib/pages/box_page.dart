@@ -93,26 +93,38 @@ class BoxPage extends HookConsumerWidget {
                     painter: TrianglePainter(),
                   ),
                 ),
-                Material(
-                  color: Color.fromARGB(245, 221, 60, 60),
-                  elevation: 5.0, // Adjust the elevation value as needed
-                  borderRadius: BorderRadius.circular(15.0),
-                  child: Container(
-                    height: 95.h,
-                    width: 350.w,
-                    decoration: BoxDecoration(),
+                Transform.translate(
+                  offset: Offset(0, 25.h),
+                  child: Material(
+                    color: Color.fromARGB(250, 158, 61, 61), // Background color
+                    elevation: 5.0, // Elevation value
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                          Radius.elliptical(375.w / 2, 140.h / 2)),
+                    ),
+                    child: Container(
+                      height: 140
+                          .h, // Specify the height, use ScreenUtil or similar
+                      width:
+                          375.w, // Specify the width, use ScreenUtil or similar
+                      // The container can now be simple without a BoxDecoration unless needed for other properties
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.06),
-                  child: Text(
-                    'Lord, I place my burden into Your care as I put it into this box. As long as it is in Your box, I never have to worry about it again.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 17.spMin,
-                      fontFamily: 'PlaypenSans',
+                Transform.translate(
+                  offset: Offset(0, 25.h),
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: screenWidth * 0.06),
+                    child: Text(
+                      'Lord, I place my burden into Your care as I put it into this box. As long as it is in Your box, I never have to worry about it again.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 17.spMin,
+                        fontFamily: 'PlaypenSans',
+                      ),
                     ),
                   ),
                 )
@@ -126,24 +138,30 @@ class BoxPage extends HookConsumerWidget {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  Material(
-                    color: Color.fromARGB(245, 252, 215, 53),
-                    elevation: 5.0, // Adjust the elevation value as needed
-                    borderRadius: BorderRadius.circular(15.0),
-                    child: Container(
-                      height: 55.h,
-                      width: 550.w,
-                      decoration: BoxDecoration(),
+                  Transform.translate(
+                    offset: Offset(0, 20.h),
+                    child: Material(
+                      color: Color.fromARGB(245, 36, 41, 91),
+                      elevation: 5.0, // Adjust the elevation value as needed
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: Container(
+                        height: 55.h,
+                        width: 550.w,
+                        decoration: BoxDecoration(),
+                      ),
                     ),
                   ),
-                  Text(
-                    "My Burden Box",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 26.0.spMin,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'PlaypenSans',
+                  Transform.translate(
+                    offset: Offset(0, 20.h),
+                    child: Text(
+                      "My Burden Box",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 26.0.spMin,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'PlaypenSans',
+                      ),
                     ),
                   )
                 ],
