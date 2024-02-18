@@ -56,6 +56,22 @@ class CalendarPage extends HookConsumerWidget {
 
     final activeDayInedex = useState(1);
 
+    // Enforce portrait orientation for this screen
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   print(
+    //       '------- addPostFrameCallback -------- landscapeLeft landscapeRight');
+    //   SystemChrome.setPreferredOrientations([
+    //     DeviceOrientation.landscapeLeft,
+    //     DeviceOrientation.landscapeRight,
+    //   ]);
+    // });
+
+    useEffect(() {
+      print('------- useEffect -------- landscapeLeft landscapeRight');
+      _setLandscapeOrientation();
+      return null; // Return a callback to be run on dispose.
+    }, const []); // The empty array ensures this effect runs only once.
+
     // Assuming calendarEntries is a list with at least 16 items
     final firstRowEntries = caledarEntries.sublist(0, 8);
     final secondRowEntries = caledarEntries.sublist(8, 16);
@@ -98,9 +114,6 @@ class CalendarPage extends HookConsumerWidget {
         ),
       ),
     ); // Add the last Container separately
-
-    // Set orientation to landscape when entering the page
-    _setLandscapeOrientation();
 
     return Scaffold(
       appBar: PreferredSize(
@@ -255,6 +268,8 @@ class CalendarPage extends HookConsumerWidget {
   }
 
   void _setLandscapeOrientation() {
+    print(
+        '------- _setLandscapeOrientation -------- landscapeRight landscapeLeftn');
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
@@ -262,8 +277,9 @@ class CalendarPage extends HookConsumerWidget {
   }
 
   Future<void> _resetOrientation() async {
+    print('------- _resetOrientation -------- portrait up and down');
     // Reset the orientation to default
-    await SystemChrome.setPreferredOrientations([
+    SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);

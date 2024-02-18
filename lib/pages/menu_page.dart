@@ -11,12 +11,14 @@ class MenuPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Enforce portrait orientation for this screen
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   print('---menu---- addPostFrameCallback -------- portrait up and down');
+    //   SystemChrome.setPreferredOrientations([
+    //     DeviceOrientation.portraitUp,
+    //     DeviceOrientation.portraitDown,
+    //   ]);
+    // });
+
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 

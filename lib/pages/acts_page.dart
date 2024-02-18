@@ -83,7 +83,7 @@ class ActsPage extends HookConsumerWidget {
                       currentText.value,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 11.spMin,
+                          fontSize: 12.spMin,
                           fontFamily: 'PlaypenSans',
                           fontWeight: FontWeight.bold),
                     ),
