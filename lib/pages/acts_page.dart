@@ -79,13 +79,15 @@ class ActsPage extends HookConsumerWidget {
                   child: Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 40.w, vertical: 10.h),
-                    child: Text(
-                      currentText.value,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 12.spMin,
-                          fontFamily: 'PlaypenSans',
-                          fontWeight: FontWeight.bold),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        currentText.value,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 14.spMin,
+                            fontFamily: 'PlaypenSans',
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
