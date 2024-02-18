@@ -93,9 +93,15 @@ class BoxPage extends HookConsumerWidget {
                     painter: TrianglePainter(),
                   ),
                 ),
-                Image.asset(
-                  'lib/assets/TreasureBox/Ellipse 1.imageset/Ellipse 1.png',
-                  fit: BoxFit.contain,
+                Material(
+                  color: Color.fromARGB(245, 221, 60, 60),
+                  elevation: 5.0, // Adjust the elevation value as needed
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Container(
+                    height: 95.h,
+                    width: 350.w,
+                    decoration: BoxDecoration(),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.06),
@@ -103,9 +109,9 @@ class BoxPage extends HookConsumerWidget {
                     'Lord, I place my burden into Your care as I put it into this box. As long as it is in Your box, I never have to worry about it again.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.w600,
-                      fontSize: 12.sp,
+                      fontSize: 17.spMin,
                       fontFamily: 'PlaypenSans',
                     ),
                   ),
@@ -120,16 +126,22 @@ class BoxPage extends HookConsumerWidget {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  Image.asset(
-                    'lib/assets/TreasureBox/Shape 1.imageset/Shape 1.png',
-                    fit: BoxFit.contain,
+                  Material(
+                    color: Color.fromARGB(245, 252, 215, 53),
+                    elevation: 5.0, // Adjust the elevation value as needed
+                    borderRadius: BorderRadius.circular(15.0),
+                    child: Container(
+                      height: 55.h,
+                      width: 550.w,
+                      decoration: BoxDecoration(),
+                    ),
                   ),
                   Text(
                     "My Burden Box",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22.0.sp,
+                      color: Colors.black,
+                      fontSize: 26.0.spMin,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'PlaypenSans',
                     ),
