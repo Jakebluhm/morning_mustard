@@ -114,8 +114,7 @@ class BoxPage extends HookConsumerWidget {
                 Transform.translate(
                   offset: Offset(0, 25.h),
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: screenWidth * 0.06),
+                    padding: EdgeInsets.symmetric(horizontal: 45.w),
                     child: Text(
                       'Lord, I place my burden into Your care as I put it into this box. As long as it is in Your box, I never have to worry about it again.',
                       textAlign: TextAlign.center,
