@@ -118,7 +118,12 @@ class HeartPage extends HookConsumerWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(
+                left: 18.0.w,
+                right: 18.0.w,
+                top: 8.0.h,
+                bottom: 18.0.w,
+              ),
               child: TextField(
                 style: TextStyle(
                   fontFamily: 'PlaypenSans',

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/constants/armor_button_data.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
@@ -169,7 +170,12 @@ class ArmorPage extends HookConsumerWidget {
                     }).toList(),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.only(
+                      left: 8.0.w,
+                      right: 8.0.w,
+                      top: 8.0.h,
+                      bottom: 14.0.w,
+                    ),
                     child: Container(
                       width: screenWidth * 0.45,
                       child: Image.asset(
