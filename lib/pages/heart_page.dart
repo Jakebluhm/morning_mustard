@@ -52,7 +52,7 @@ class HeartPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Heart',
           style: TextStyle(
             color: Colors.black,
@@ -60,85 +60,91 @@ class HeartPage extends HookConsumerWidget {
             fontFamily: 'PlaypenSans',
           ),
         ),
-        backgroundColor: Color.fromRGBO(255, 205, 88, 1),
+        backgroundColor: const Color.fromRGBO(255, 205, 88, 1),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             ref.navigationService.goToMenuPage();
             print("Left Icon button pressed!");
           },
         ),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color.fromRGBO(255, 219, 88, 1.0),
-                Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
-                Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
-              ]),
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  top: 10.h,
-                  right: MediaQuery.of(context).size.width * 0.15,
-                  left: MediaQuery.of(context).size.width * 0.15),
-              child: Image.asset(
-                'lib/assets/heart/Thy Word.imageset/heart_heading.png',
-                fit: BoxFit.contain,
-              ),
+      body: LayoutBuilder(// Use LayoutBuilder to get parent constraints
+          builder: (context, constraints) {
+        return SingleChildScrollView(
+          child: Container(
+            // Ensure there's a constrained height for the column
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color.fromRGBO(255, 219, 88, 1.0),
+                    Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
+                    Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
+                  ]),
             ),
-            Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  onInfoPress(context);
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Image.asset(
-                      'lib/assets/heart/heart.imageset/heart.png',
-                      fit: BoxFit.contain,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: 10.h,
+                      right: MediaQuery.of(context).size.width * 0.15,
+                      left: MediaQuery.of(context).size.width * 0.15),
+                  child: Image.asset(
+                    'lib/assets/heart/Thy Word.imageset/heart_heading.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    onInfoPress(context);
+                  },
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'lib/assets/heart/heart.imageset/heart.png',
+                        fit: BoxFit.contain,
+                      ),
+                      showText.value
+                          ? Text(
+                              currentVerse.value,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'PlaypenSans',
+                              ),
+                            )
+                          : Container(),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 18.0.w,
+                    right: 18.0.w,
+                    top: 8.0.h,
+                    bottom: 18.0.w,
+                  ),
+                  child: TextField(
+                    style: TextStyle(
+                      fontFamily: 'PlaypenSans',
                     ),
-                    showText.value
-                        ? Text(
-                            currentVerse.value,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'PlaypenSans',
-                            ),
-                          )
-                        : Container(),
-                  ],
+                    controller: verseController,
+                    onSubmitted: addVerse,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Add a Verse',
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 18.0.w,
-                right: 18.0.w,
-                top: 8.0.h,
-                bottom: 18.0.w,
-              ),
-              child: TextField(
-                style: TextStyle(
-                  fontFamily: 'PlaypenSans',
-                ),
-                controller: verseController,
-                onSubmitted: addVerse,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Add a Verse',
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      }),
     );
   }
 }

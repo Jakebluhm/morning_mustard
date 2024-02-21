@@ -70,191 +70,199 @@ class BoxPage extends HookConsumerWidget {
           },
         ),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color.fromRGBO(255, 219, 88, 1.0),
-                Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
-                Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
-              ]),
-        ),
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.center,
+      body: LayoutBuilder(// Use LayoutBuilder to get parent constraints
+          builder: (context, constraints) {
+        return SingleChildScrollView(
+          reverse: true,
+          child: Container(
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color.fromRGBO(255, 219, 88, 1.0),
+                    Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
+                    Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
+                  ]),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Transform.rotate(
-                  angle: pi,
-                  child: CustomPaint(
-                    size: Size(screenWidth, screenHeight * 0.27),
-                    painter: TrianglePainter(),
-                  ),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Transform.rotate(
+                      angle: pi,
+                      child: CustomPaint(
+                        size: Size(screenWidth, screenHeight * 0.27),
+                        painter: TrianglePainter(),
+                      ),
+                    ),
+                    Transform.translate(
+                      offset: Offset(0, 15.h),
+                      child: Material(
+                        color: const Color.fromARGB(
+                            250, 158, 61, 61), // Background color
+                        elevation: 5.0, // Elevation value
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                              Radius.elliptical(375.w / 2, 140.h / 2)),
+                        ),
+                        child: Container(
+                          height: 140
+                              .h, // Specify the height, use ScreenUtil or similar
+                          width: 375
+                              .w, // Specify the width, use ScreenUtil or similar
+                          // The container can now be simple without a BoxDecoration unless needed for other properties
+                        ),
+                      ),
+                    ),
+                    Transform.translate(
+                      offset: Offset(0, 15.h),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 45.w),
+                        child: Text(
+                          'Lord, I place my burden into Your care as I put it into this box. As long as it is in Your box, I never have to worry about it again.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 17.spMin,
+                            fontFamily: 'PlaypenSans',
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                Transform.translate(
-                  offset: Offset(0, 25.h),
-                  child: Material(
-                    color: Color.fromARGB(250, 158, 61, 61), // Background color
-                    elevation: 5.0, // Elevation value
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                          Radius.elliptical(375.w / 2, 140.h / 2)),
-                    ),
-                    child: Container(
-                      height: 140
-                          .h, // Specify the height, use ScreenUtil or similar
-                      width:
-                          375.w, // Specify the width, use ScreenUtil or similar
-                      // The container can now be simple without a BoxDecoration unless needed for other properties
-                    ),
-                  ),
-                ),
-                Transform.translate(
-                  offset: Offset(0, 25.h),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 45.w),
-                    child: Text(
-                      'Lord, I place my burden into Your care as I put it into this box. As long as it is in Your box, I never have to worry about it again.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 17.spMin,
-                        fontFamily: 'PlaypenSans',
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: 25.h,
-                  left: screenWidth * 0.15,
-                  right: screenWidth * 0.15),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Transform.translate(
-                    offset: Offset(0, 20.h),
-                    child: Material(
-                      color: Color.fromARGB(245, 36, 41, 91),
-                      elevation: 5.0, // Adjust the elevation value as needed
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: Container(
-                        height: 55.h,
-                        width: 550.w,
-                        decoration: BoxDecoration(),
-                      ),
-                    ),
-                  ),
-                  Transform.translate(
-                    offset: Offset(0, 20.h),
-                    child: Text(
-                      "My Burden Box",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 26.0.spMin,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'PlaypenSans',
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  if (boxOpen.value) {
-                    onInfoPress(context);
-                  }
-                  boxOpen.value = true;
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: 25.h,
+                      left: screenWidth * 0.15,
+                      right: screenWidth * 0.15),
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      boxOpen.value
-                          ? Transform.translate(
-                              offset: Offset(imageHeight * 0.07, 0),
-                              child: Image.asset(
-                                'lib/assets/TreasureBox/box_opened.png',
-                                fit: BoxFit.contain,
-                                width: imageHeight,
-                              ),
-                            )
-                          : Transform.translate(
-                              offset: Offset(imageHeight * 0.07, 0),
-                              child: Image.asset(
-                                'lib/assets/TreasureBox/box_closed.png',
-                                fit: BoxFit.contain,
-                                width: imageHeight,
-                              ),
-                            ),
-                      currentBurden.value.isNotEmpty
-                          ? Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Transform.translate(
-                                offset: Offset(0, imageHeight * -0.12),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      color: burdens.current.length > 0
-                                          ? Colors.white.withOpacity(0.65)
-                                          : Colors.transparent),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      currentBurden.value,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: 'PlaypenSans',
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            )
-                          : Container(),
+                      Transform.translate(
+                        offset: Offset(0, 5.h),
+                        child: Material(
+                          color: Color.fromARGB(245, 36, 41, 91),
+                          elevation:
+                              5.0, // Adjust the elevation value as needed
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Container(
+                            height: 55.h,
+                            width: 550.w,
+                            decoration: BoxDecoration(),
+                          ),
+                        ),
+                      ),
+                      Transform.translate(
+                        offset: Offset(0, 5.h),
+                        child: Text(
+                          "My Burden Box",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 26.0.spMin,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'PlaypenSans',
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
-              ),
-            ),
-            boxOpen.value
-                ? Padding(
-                    padding: EdgeInsets.only(
-                      left: 18.0.w,
-                      right: 18.0.w,
-                      top: 8.0.h,
-                      bottom: 18.0.w,
+                GestureDetector(
+                  onTap: () {
+                    if (boxOpen.value) {
+                      onInfoPress(context);
+                    }
+                    boxOpen.value = true;
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 0),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        boxOpen.value
+                            ? Transform.translate(
+                                offset: Offset(imageHeight * 0.07, 0),
+                                child: Image.asset(
+                                  'lib/assets/TreasureBox/box_opened.png',
+                                  fit: BoxFit.contain,
+                                  width: imageHeight,
+                                ),
+                              )
+                            : Transform.translate(
+                                offset: Offset(imageHeight * 0.07, 0),
+                                child: Image.asset(
+                                  'lib/assets/TreasureBox/box_closed.png',
+                                  fit: BoxFit.contain,
+                                  width: imageHeight,
+                                ),
+                              ),
+                        currentBurden.value.isNotEmpty
+                            ? Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0),
+                                child: Transform.translate(
+                                  offset: Offset(0, imageHeight * -0.12),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: burdens.current.length > 0
+                                            ? Colors.white.withOpacity(0.65)
+                                            : Colors.transparent),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        currentBurden.value,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'PlaypenSans',
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                      ],
                     ),
-                    child: TextField(
-                      style: TextStyle(
-                        fontFamily: 'PlaypenSans',
-                      ),
-                      controller: burdenController,
-                      onSubmitted: addBurden,
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Add a Burden',
-                          labelStyle: TextStyle(
+                  ),
+                ),
+                boxOpen.value
+                    ? Padding(
+                        padding: EdgeInsets.only(
+                          left: 18.0.w,
+                          right: 18.0.w,
+                          top: 8.0.h,
+                          bottom: 18.0.w,
+                        ),
+                        child: TextField(
+                          style: TextStyle(
                             fontFamily: 'PlaypenSans',
-                          )),
-                    ),
-                  )
-                : Container(),
-          ],
-        ),
-      ),
+                          ),
+                          controller: burdenController,
+                          onSubmitted: addBurden,
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Add a Burden',
+                              labelStyle: TextStyle(
+                                fontFamily: 'PlaypenSans',
+                              )),
+                        ),
+                      )
+                    : Container(),
+              ],
+            ),
+          ),
+        );
+      }),
     );
   }
 }
