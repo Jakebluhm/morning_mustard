@@ -1,4 +1,4 @@
-package com.example.morning_mustard
+package com.biblegum.morning_mustard
 
 import io.flutter.embedding.android.FlutterActivity
 
