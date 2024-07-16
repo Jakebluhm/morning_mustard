@@ -30,6 +30,7 @@ class MyApp extends ConsumerWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) => MaterialApp.router(
+              debugShowCheckedModeBanner: false,
               routerConfig: router,
               title: 'Flutter Demo',
               theme: ThemeData(
