@@ -1,9 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:morning_mustard/providers/calendar_entry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
 final calendarEntriesProvider =
     StateNotifierProvider<CalendarEntryListNotifier, List<CalendarEntry>>(
@@ -13,7 +16,12 @@ final calendarEntriesProvider =
 
 class CalendarEntryListNotifier extends StateNotifier<List<CalendarEntry>> {
   CalendarEntryListNotifier() : super([]) {
-    _loadFromPrefs();
+    _initialize();
+  }
+
+  Future<void> _initialize() async {
+    await _loadFromPrefs();
+    // Any other initialization logic can go here
   }
 
   Future<void> _loadFromPrefs() async {
@@ -26,11 +34,10 @@ class CalendarEntryListNotifier extends StateNotifier<List<CalendarEntry>> {
           .toList();
       state = entries;
     } else {
-      // Initialize with default values if not found in prefs
       state = List.generate(
         30,
         (index) => CalendarEntry(
-          imagePath: '', // Initial imagePath
+          imagePath: '',
           name: '',
           index: index,
         ),
@@ -45,18 +52,18 @@ class CalendarEntryListNotifier extends StateNotifier<List<CalendarEntry>> {
     await prefs.setString('calendarEntries', entriesJson);
   }
 
-  void updateImagePath(int index, String newPath) {
-    // Directly update the state without calling super
+  Future<void> updateImagePath(int index, String newPath) async {
     state = state.map((entry) {
       if (entry.index == index) {
-        return entry.copyWith(imagePath: newPath);
+        // Only save the file name, not the full path
+        return entry.copyWith(imagePath: newPath.split('/').last);
       }
       return entry;
     }).toList();
-    _saveToPrefs();
+    await _saveToPrefs();
   }
 
-  void updateName(int index, String newName) {
+  Future<void> updateName(int index, String newName) async {
     // Directly update the state without calling super
     state = state.map((entry) {
       if (entry.index == index) {
@@ -64,7 +71,20 @@ class CalendarEntryListNotifier extends StateNotifier<List<CalendarEntry>> {
       }
       return entry;
     }).toList();
-    _saveToPrefs();
+    await _saveToPrefs();
+  }
+
+  Future<void> pickImage(int index) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      final appDir = await getApplicationDocumentsDirectory();
+      final fileName =
+          DateTime.now().millisecondsSinceEpoch.toString() + '.jpg';
+      final savedImage =
+          await File(pickedFile.path).copy('${appDir.path}/$fileName');
+      await updateImagePath(index, fileName); // Only save the file name
+    }
   }
 }
 
@@ -73,12 +93,10 @@ class ActiveIndexNotifier extends StateNotifier<int> {
       : super(-1); // Initial state is `null`, indicating no active index
 
   void setActiveIndex(int index) {
-    print('Active index is $index');
     state = index;
   }
 
   int getActiveIndex() {
-    print('Active index is $state');
     return state;
   }
 }

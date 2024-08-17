@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/providers/game/heart_verses_provider.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
+import 'package:morning_mustard/widgets/custom_text_clipper.dart';
+import 'package:morning_mustard/widgets/heart_container_widget.dart';
 import 'package:morning_mustard/widgets/heart_modal_widget.dart';
 
 class HeartPage extends HookConsumerWidget {
@@ -19,9 +21,7 @@ class HeartPage extends HookConsumerWidget {
     final currentVerse = useState<String>("");
     final TextEditingController verseController = useTextEditingController();
 
-    double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    double imageHeight = screenHeight * 0.4;
 
     // Function to add a verse to the list
     void addVerse(String verse) {
@@ -65,7 +65,7 @@ class HeartPage extends HookConsumerWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
             ref.navigationService.goToMenuPage();
-            print("Left Icon button pressed!");
+            debugPrint("Left Icon button pressed!");
           },
         ),
       ),
@@ -110,11 +110,23 @@ class HeartPage extends HookConsumerWidget {
                         fit: BoxFit.contain,
                       ),
                       showText.value
-                          ? Text(
-                              currentVerse.value,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'PlaypenSans',
+                          ? Container(
+                              //decoration: BoxDecoration(border: Border.all()),
+                              width: 230.w,
+                              height: 100.h,
+                              padding: EdgeInsets.symmetric(horizontal: 0.0.w),
+                              margin: EdgeInsets.only(bottom: 60.h),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                    currentVerse.value,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      fontFamily: 'PlaypenSans',
+                                    ),
+                                  ),
+                                ),
                               ),
                             )
                           : Container(),
@@ -129,12 +141,12 @@ class HeartPage extends HookConsumerWidget {
                     bottom: 18.0.w,
                   ),
                   child: TextField(
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: 'PlaypenSans',
                     ),
                     controller: verseController,
                     onSubmitted: addVerse,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Add a Verse',
                     ),

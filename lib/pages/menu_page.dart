@@ -10,15 +10,6 @@ class MenuPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Enforce portrait orientation for this screen
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   print('---menu---- addPostFrameCallback -------- portrait up and down');
-    //   SystemChrome.setPreferredOrientations([
-    //     DeviceOrientation.portraitUp,
-    //     DeviceOrientation.portraitDown,
-    //   ]);
-    // });
-
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -38,7 +29,6 @@ class MenuPage extends HookConsumerWidget {
           color: Colors.black,
           onPressed: () {
             ref.navigationService.goToHomePage();
-            print("Left Icon button pressed!");
           },
         ),
       ),
@@ -84,7 +74,6 @@ class MenuPage extends HookConsumerWidget {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: () {
-                //print("Container ${item.name} tapped!");
                 if (item.route != null) {
                   ref.navigationService.goToRoute(item.route!);
                 }

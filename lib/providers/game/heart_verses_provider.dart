@@ -33,6 +33,17 @@ class VersesNotifier extends StateNotifier<Verses> {
     state = state.copyWith(current: updatedList);
   }
 
+  void editVerse(String verse, String newVerse) async {
+    final prefs = await SharedPreferences.getInstance();
+    final index = state.current.indexOf(verse);
+    if (index != -1) {
+      final updatedList = List.of(state.current); // Create a copy to modify
+      updatedList[index] = newVerse; // Replace the old verse with the new verse
+      await prefs.setStringList('verses', updatedList);
+      state = state.copyWith(current: updatedList);
+    }
+  }
+
   void deleteVerse(String verse) async {
     final prefs = await SharedPreferences.getInstance();
     final index = state.current.indexOf(verse);

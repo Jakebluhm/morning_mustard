@@ -34,7 +34,6 @@ class CalendarPage extends HookConsumerWidget {
             }
 
             ref.read(activeIndexProvider.notifier).setActiveIndex(entry.index);
-            print("Setting active index to ${entry.index}");
           },
           isActive: activeIndex == entry.index,
         );
@@ -55,24 +54,30 @@ class CalendarPage extends HookConsumerWidget {
     final activeIndex = ref.watch(activeIndexProvider);
 
     final activeDayInedex = useState(1);
-
-    // Enforce portrait orientation for this screen
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   print(
-    //       '------- addPostFrameCallback -------- landscapeLeft landscapeRight');
-    //   SystemChrome.setPreferredOrientations([
-    //     DeviceOrientation.landscapeLeft,
-    //     DeviceOrientation.landscapeRight,
-    //   ]);
-    // });
+    final calendarRowHeight = useState<double>(30);
+    final _containerKey = useMemoized(() => GlobalKey());
+    useEffect(() {
+      _setLandscapeOrientation();
+      return null;
+    }, const []);
 
     useEffect(() {
-      print('------- useEffect -------- landscapeLeft landscapeRight');
-      _setLandscapeOrientation();
-      return null; // Return a callback to be run on dispose.
-    }, const []); // The empty array ensures this effect runs only once.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final renderBox =
+            _containerKey.currentContext?.findRenderObject() as RenderBox?;
+        if (renderBox != null) {
+          calendarRowHeight.value = renderBox.size.height;
+        }
+      });
+
+      // To ensure it runs again after layout updates
+      return null;
+    }, [screenWidth, screenHeight]);
 
     // Assuming calendarEntries is a list with at least 16 items
+    if (caledarEntries.isEmpty) {
+      return Center(child: CircularProgressIndicator());
+    }
     final firstRowEntries = caledarEntries.sublist(0, 8);
     final secondRowEntries = caledarEntries.sublist(8, 16);
     final thirdRowEntries = caledarEntries.sublist(16, 23);
@@ -117,7 +122,7 @@ class CalendarPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(25.0),
+        preferredSize: Size.fromHeight(25.0.h),
         child: AppBar(
           title: Text(
             'Prayers Today',
@@ -142,125 +147,182 @@ class CalendarPage extends HookConsumerWidget {
           ),
         ),
       ),
-      body: OverflowBox(
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Color.fromRGBO(255, 219, 88, 1.0),
-                  Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
-                  Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
-                ]),
-          ),
-          child: Center(
-            child: Container(
-              height: ((AppSizes.calendarDayHeight * 4) + 15 + 20.h),
-              width: ((AppSizes.calendarDayWidth * 8) + 12.w),
-              child: Padding(
-                padding: EdgeInsets.all(8.0.h),
-                child: Stack(
-                  children: [
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [...daysColumnHeaders],
-                        ),
-                        buildCalendarEntryRow(
-                          entriesSegment: firstRowEntries,
-                          ref: ref,
-                          activeIndex: activeIndex,
-                        ),
-                        buildCalendarEntryRow(
-                          entriesSegment: secondRowEntries,
-                          ref: ref,
-                          activeIndex: activeIndex,
-                        ),
-                        buildCalendarEntryRow(
-                          entriesSegment: thirdRowEntries,
-                          ref: ref,
-                          activeIndex: activeIndex,
-                        ),
-                        buildCalendarEntryRow(
-                          entriesSegment: fourthRowEntries,
-                          ref: ref,
-                          activeIndex: activeIndex,
-                        ),
-                      ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromRGBO(255, 219, 88, 1.0),
+                Color.fromRGBO(0xf7, 0xd4, 0x86, 1.0),
+                Color.fromRGBO(0xc5, 0xf9, 0xd7, 1.0),
+              ]),
+        ),
+        child: Center(
+          child: Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(bottom: 16.h, left: 8.w, right: 2.w),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      int index = activeIndexNotifier.getActiveIndex();
+
+                      if (index == -1) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Pick Date'),
+                              content: Text(
+                                  'Pick a date in the calendar to add an image.'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pop(); // Close the dialog
+                                  },
+                                  child: Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        caledarEntriesNotifier
+                            .pickImage(activeIndexNotifier.getActiveIndex());
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(), // Makes the button circular
+                      padding: EdgeInsets.all(
+                          12.h), // Adjust the padding to increase size
                     ),
-                    Positioned(
-                      top:
-                          daysHeaderHeight, // Positions the container at the bottom of the stack
-                      right: (AppSizes.calendarDayWidth *
-                          (7 -
-                              activeDayInedex
-                                  .value)), // Positions the container to the right of the stack
-                      child: IgnorePointer(
+                    child: Icon(
+                      Icons.add, // The plus icon
+                      size: 24.h, // Size of the icon
+                      color: Colors.black, // Icon color
+                    ),
+                  ),
+                ),
+              ),
+              IntrinsicWidth(
+                child: Container(
+                  //height: ((calendarRowHeight.value * 4) + 15 + 20.h),
+                  //width: ((AppSizes.calendarDayWidth * 8)),
+                  padding: EdgeInsets.symmetric(vertical: 16.h),
+                  child: Stack(
+                    children: [
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [...daysColumnHeaders],
+                          ),
+                          Expanded(
+                            key: _containerKey,
+                            child: buildCalendarEntryRow(
+                              entriesSegment: firstRowEntries,
+                              ref: ref,
+                              activeIndex: activeIndex,
+                            ),
+                          ),
+                          Expanded(
+                            child: buildCalendarEntryRow(
+                              entriesSegment: secondRowEntries,
+                              ref: ref,
+                              activeIndex: activeIndex,
+                            ),
+                          ),
+                          Expanded(
+                            child: buildCalendarEntryRow(
+                              entriesSegment: thirdRowEntries,
+                              ref: ref,
+                              activeIndex: activeIndex,
+                            ),
+                          ),
+                          Expanded(
+                            child: buildCalendarEntryRow(
+                              entriesSegment: fourthRowEntries,
+                              ref: ref,
+                              activeIndex: activeIndex,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Positioned(
+                        top:
+                            daysHeaderHeight, // Positions the container at the bottom of the stack
+                        right: (AppSizes.calendarDayWidth *
+                            (7 -
+                                activeDayInedex
+                                    .value)), // Positions the container to the right of the stack
+                        child: IgnorePointer(
+                          child: Container(
+                            // Define your container's appearance and contents here
+                            width: AppSizes
+                                .calendarDayWidth, // Specify the width of the container
+                            height: activeDayInedex.value == 0
+                                ? (calendarRowHeight.value) * 2
+                                : (calendarRowHeight.value) *
+                                    4, // Specify the height of the container
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: Colors.red, width: 3)),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: daysHeaderHeight +
+                            (calendarRowHeight.value *
+                                2), // Positions the container at the bottom of the stack
+                        right: (AppSizes.calendarDayWidth *
+                            7), // Positions the container to the right of the stack
                         child: Container(
                           // Define your container's appearance and contents here
                           width: AppSizes
                               .calendarDayWidth, // Specify the width of the container
-                          height: activeDayInedex.value == 0
-                              ? (AppSizes.calendarDayHeight) * 2
-                              : (AppSizes.calendarDayHeight) *
-                                  4, // Specify the height of the container
+                          height: (calendarRowHeight.value *
+                              2), // Specify the height of the container
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.red, width: 3)),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: (AppSizes.calendarDayHeight * 2) +
-                          daysHeaderHeight, // Positions the container at the bottom of the stack
-                      right: (AppSizes.calendarDayWidth *
-                          7), // Positions the container to the right of the stack
-                      child: Container(
-                        // Define your container's appearance and contents here
-                        width: AppSizes
-                            .calendarDayWidth, // Specify the width of the container
-                        height: (AppSizes.calendarDayHeight) *
-                            2, // Specify the height of the container
-                        decoration: BoxDecoration(
-                            color: Colors.amber, // Example color
-                            border: Border.all()),
-                        child: Center(
-                          child: ListView.builder(
-                            itemCount: FaceImages.paths.length,
-                            itemBuilder: (context, index) {
-                              // Generating dummy data for each item
-                              String itemData = '${index + 1}';
+                              color: Colors.amber, // Example color
+                              border: Border.all()),
+                          child: Center(
+                            child: ListView.builder(
+                              itemCount: FaceImages.paths.length,
+                              itemBuilder: (context, index) {
+                                // Generating dummy data for each item
+                                String itemData = '${index + 1}';
 
-                              return GestureDetector(
-                                onTap: () {
-                                  if (activeIndexNotifier.getActiveIndex() !=
-                                      -1) {
-                                    caledarEntriesNotifier.updateImagePath(
-                                        activeIndexNotifier.getActiveIndex()!,
-                                        FaceImages.paths[index]);
-                                  }
-                                },
-                                child: Container(
-                                  decoration:
-                                      BoxDecoration(border: Border.all()),
-                                  child: Image.asset(
-                                    FaceImages.paths[
-                                        index], // Replace with your actual image path
-                                    fit: BoxFit
-                                        .cover, // Adjust the fit as needed
+                                return GestureDetector(
+                                  onTap: () {
+                                    if (activeIndexNotifier.getActiveIndex() !=
+                                        -1) {
+                                      caledarEntriesNotifier.updateImagePath(
+                                          activeIndexNotifier.getActiveIndex()!,
+                                          FaceImages.paths[index]);
+                                    }
+                                  },
+                                  child: Container(
+                                    decoration:
+                                        BoxDecoration(border: Border.all()),
+                                    child: Image.asset(
+                                      FaceImages.paths[index],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -268,8 +330,6 @@ class CalendarPage extends HookConsumerWidget {
   }
 
   void _setLandscapeOrientation() {
-    print(
-        '------- _setLandscapeOrientation -------- landscapeRight landscapeLeftn');
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
@@ -277,7 +337,6 @@ class CalendarPage extends HookConsumerWidget {
   }
 
   Future<void> _resetOrientation() async {
-    print('------- _resetOrientation -------- portrait up and down');
     // Reset the orientation to default
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,

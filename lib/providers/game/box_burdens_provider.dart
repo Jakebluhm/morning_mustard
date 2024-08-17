@@ -23,12 +23,10 @@ class BurdensNotifier extends StateNotifier<Burdens> {
   Future<void> _loadBurdens() async {
     final prefs = await SharedPreferences.getInstance();
     final burdensList = prefs.getStringList('burdens') ?? [];
-    print("Loaded burdens: $burdensList");
     state = Burdens(current: burdensList);
   }
 
   void addBurden(String burden) async {
-    print("Adding burden: $burden");
     final prefs = await SharedPreferences.getInstance();
     final updatedList = [...state.current, burden];
     await prefs.setStringList('burdens', updatedList);
@@ -36,7 +34,6 @@ class BurdensNotifier extends StateNotifier<Burdens> {
   }
 
   void deleteBurden(String burden) async {
-    print("Deleting burden: $burden");
     final prefs = await SharedPreferences.getInstance();
     final index = state.current.indexOf(burden);
     final updatedList = List.of(state.current); // Create a copy to modify

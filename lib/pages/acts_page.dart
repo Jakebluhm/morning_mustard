@@ -29,7 +29,6 @@ class ActsPage extends HookConsumerWidget {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             ref.navigationService.goToMenuPage();
-            print("Left Icon button pressed!");
           },
         ),
       ),
@@ -126,7 +125,6 @@ class ActsPage extends HookConsumerWidget {
         return GestureDetector(
           onTap: () {
             currentText.value = item.text;
-            print("Container ${item.text} tapped!");
           },
           child: Container(
             height: screenHeight * 0.1,

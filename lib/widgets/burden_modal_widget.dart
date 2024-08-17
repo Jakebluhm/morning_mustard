@@ -45,7 +45,6 @@ class BurdenModal extends HookConsumerWidget {
                       ),
                       IconButton(
                           onPressed: () {
-                            print('delete verse');
                             onRemove(burdens.current[index]);
                           },
                           icon: Icon(Icons.delete_forever))

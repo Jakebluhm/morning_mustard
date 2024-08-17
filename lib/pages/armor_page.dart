@@ -53,7 +53,6 @@ class ArmorPage extends HookConsumerWidget {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             ref.navigationService.goToMenuPage();
-            print("Left Icon button pressed!");
           },
         ),
       ),

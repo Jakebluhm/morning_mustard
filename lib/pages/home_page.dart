@@ -37,7 +37,6 @@ class HomePage extends HookConsumerWidget {
             onPressed: () {
               // Handle the button's press
               ref.navigationService.goToMenuPage();
-              print("Right Icon button pressed!");
             },
           ),
         ],
