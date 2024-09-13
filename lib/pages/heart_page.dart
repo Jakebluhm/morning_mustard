@@ -91,11 +91,85 @@ class HeartPage extends HookConsumerWidget {
                 Padding(
                   padding: EdgeInsets.only(
                       top: 10.h,
-                      right: MediaQuery.of(context).size.width * 0.15,
-                      left: MediaQuery.of(context).size.width * 0.15),
-                  child: Image.asset(
-                    'lib/assets/heart/Thy Word.imageset/heart_heading.png',
-                    fit: BoxFit.contain,
+                      right: MediaQuery.of(context).size.width * 0.05,
+                      left: MediaQuery.of(context).size.width * 0.05),
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: <Widget>[
+                          // Outline text
+                          Text(
+                            "Psalm 119:11",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'PlaypenSans',
+                              letterSpacing: 2,
+                              fontSize: 36,
+                              foreground: Paint()
+                                ..style = PaintingStyle.stroke
+                                ..strokeWidth = 4
+                                ..color = Color.fromARGB(255, 224, 122, 54),
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(0.0, -0.5),
+                                  blurRadius: 15.0,
+                                  color: Colors.black.withOpacity(0.95),
+                                ),
+                              ],
+                            ),
+                          ),
+                          // Filled text
+                          const Text(
+                            "Psalm 119:11",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'PlaypenSans',
+                              letterSpacing: 2,
+                              fontSize: 36,
+                              color: Colors
+                                  .white, // Change to your desired fill color
+                            ),
+                          ),
+                        ],
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          // Outline text
+                          Text(
+                            "Thy Word have I hid in my heart, that I might not sin against Thee.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'PlaypenSans',
+                              letterSpacing: 2,
+                              fontSize: 24,
+                              foreground: Paint()
+                                ..style = PaintingStyle.stroke
+                                ..strokeWidth = 3
+                                ..color = Color.fromARGB(255, 224, 122, 54),
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(0.0, -0.5),
+                                  blurRadius: 15.0,
+                                  color: Colors.black.withOpacity(0.95),
+                                ),
+                              ],
+                            ),
+                          ),
+                          // Filled text
+                          const Text(
+                            "Thy Word have I hid in my heart, that I might not sin against Thee.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'PlaypenSans',
+                              letterSpacing: 2,
+                              fontSize: 24,
+                              color: Colors
+                                  .white, // Change to your desired fill color
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 GestureDetector(

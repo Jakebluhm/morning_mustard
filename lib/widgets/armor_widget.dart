@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'dart:math' as math;
+
+double degreesToRadians(double degrees) {
+  return degrees * (math.pi / 180);
+}
 
 class ArmorWidget extends HookConsumerWidget {
   final bool helmet;
@@ -29,148 +35,156 @@ class ArmorWidget extends HookConsumerWidget {
     double imageHeight = imageWidth * 1.539499;
     // 519 x 799
     return Center(
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              width: imageWidth,
-              height: imageHeight,
-              child: Image.asset(
-                'lib/assets/Soilder/unplace body.imageset/unplace body.png',
-                fit: BoxFit.contain,
+      child: Padding(
+        padding: EdgeInsets.only(left: 32.0.w),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: imageWidth,
+                height: imageHeight,
+                child: Image.asset(
+                  'lib/assets/SoilderV3/v2-black.png',
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
-          ),
-          // Chest
-          chest
-              ? Transform.translate(
-                  offset: Offset(imageWidth * -0.04, imageHeight * -0.11),
-                  child: GestureDetector(
-                    onTap: () {
-                      print('Handle chest tap');
-                      onInfoPress(context, "Breast Plate of Righteousness",
-                          "When I have put on the Breast Plate of Righteousness, it will protect my heart from sinful and evil desires, for everything I do, flows out of it.");
-                    },
-                    child: Container(
-                      width: imageWidth * 0.6,
-                      child: Image.asset(
-                        'lib/assets/Soilder/body parts/chest sheild.imageset/chest sheild.png',
-                        fit: BoxFit.contain,
+            // Chest
+            chest
+                ? Transform.translate(
+                    offset: Offset(imageWidth * -0.175, imageHeight * -0.125),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('Handle chest tap');
+                        onInfoPress(context, "Breast Plate of Righteousness",
+                            "I put on the breastplate of righteousness to protect my heart from evil desires and temptations, for everything I do flows out of it. Through Your Son, Jesus Christ, I have been made righteous in Your sight. Help me to live by the power of the Holy Spirit as a righteous person.");
+                      },
+                      child: Container(
+                        //decoration: BoxDecoration(border: Border.all()),
+                        width: imageWidth * 0.575,
+                        child: Image.asset(
+                          'lib/assets/SoilderV3/Chest.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                )
-              : SizedBox.shrink(),
+                  )
+                : SizedBox.shrink(),
 
-          // Waist
-          waist
-              ? Transform.translate(
-                  offset: Offset(imageWidth * -0.045, imageHeight * 0.15),
-                  child: GestureDetector(
-                    onTap: () {
-                      print('Handle waist tap');
-                      onInfoPress(context, "Belt of Truth",
-                          "When I have fastened the Belt of Truth around me, it (God’s Word) will protect my mind in order to defeat Satan’s lies. His Truth shall be my standard.\nI will take every thought captive to Jesus Christ; never emptying my mind, but instead thinking of whatever is True, Noble, Right, Lovely, Admirable, Excellent and Praiseworthy.");
-                    },
-                    child: Container(
-                      width: imageWidth * 0.30,
-                      child: Image.asset(
-                        'lib/assets/Soilder/body parts/waist.imageset/waist.png',
-                        fit: BoxFit.contain,
+            // Waist
+            waist
+                ? Transform.translate(
+                    offset: Offset(imageWidth * -0.140, imageHeight * 0.085),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('Handle waist tap');
+                        onInfoPress(context, "Belt of Truth",
+                            "I fasten on the belt of truth, for Your Word protects me from Satan's lies and deception. May Your Truth rule in my heart, my mind, and my words.");
+                      },
+                      child: Container(
+                        width: imageWidth * 0.32,
+                        child: Image.asset(
+                          'lib/assets/SoilderV3/Waist.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                )
-              : SizedBox.shrink(),
+                  )
+                : SizedBox.shrink(),
 
-          // Legs
-          legs
-              ? Transform.translate(
-                  offset: Offset(imageWidth * -0.037, imageHeight * 0.345),
-                  child: GestureDetector(
-                    onTap: () {
-                      print('Handle legs tap');
-                      onInfoPress(
-                          context,
-                          "Shod My Feet w/the Preparation of the Gospel",
-                          "I will tie on the footgear of the Gospel of Peace, so I can stand firm in the knowledge of what the Gospel means to me and others.  My footing will be sure and unshakable, as I prepare to carry the gospel to whomever God might send me.");
-                    },
-                    child: Container(
-                      width: imageWidth * 0.54,
-                      child: Image.asset(
-                        'lib/assets/Soilder/body parts/leg arms.imageset/leg arms.png',
-                        fit: BoxFit.contain,
+            // Legs
+            legs
+                ? Transform.translate(
+                    offset: Offset(imageWidth * -0.14, imageHeight * 0.35),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('Handle legs tap');
+                        onInfoPress(
+                            context,
+                            "Shod My Feet w/the Preparation of the Gospel",
+                            "I tie on the footgear of the Gospel of peace, so I am ready to take the good news of what Jesus did on the cross to wherever You may send me. I choose to stand on the firm foundation of Jesus Christ and the knowledge of His saving death, burial and resurrection.");
+                      },
+                      child: Container(
+                        width: imageWidth * 0.65,
+                        child: Image.asset(
+                          'lib/assets/SoilderV3/Legs.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                )
-              : SizedBox.shrink(),
+                  )
+                : SizedBox.shrink(),
 
-          // Sword
-          sword
-              ? Transform.translate(
-                  offset: Offset(imageWidth * 0.03, imageHeight * 0.3),
-                  child: GestureDetector(
-                    onTap: () {
-                      print('Handle sword tap');
-                      onInfoPress(context, "Sword of the Spirit",
-                          "I will take hold of the Sword, which is the Word of God, every moment of my life.\nI will study God’s Word, learn from it and teach it, for it is effective to demolish Satan’s strongholds.");
-                    },
-                    child: Container(
-                      width: imageWidth * 0.96,
-                      child: Image.asset(
-                        'lib/assets/Soilder/body parts/sword with knob.imageset/sword with knob.png',
-                        fit: BoxFit.contain,
+            // Sword
+            sword
+                ? Transform.translate(
+                    offset: Offset(imageWidth * -0.19, imageHeight * 0.125),
+                    child: Transform.rotate(
+                      angle: degreesToRadians(0),
+                      child: GestureDetector(
+                        onTap: () {
+                          print('Handle sword tap');
+                          onInfoPress(context, "Sword of the Spirit",
+                              "I take up the sword of the Spirit, Your very Word, the offensive weapon given to me for battle, which has the power to demolish strongholds, alive, active, and sharper than any double-edged sword.");
+                        },
+                        child: Container(
+                          width: imageWidth * 0.60,
+                          child: Image.asset(
+                            'lib/assets/SoilderV3/Sword.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                )
-              : SizedBox.shrink(),
+                  )
+                : SizedBox.shrink(),
 
-          // Shield
-          shield
-              ? Transform.translate(
-                  offset: Offset(imageWidth * 0.23, imageHeight * 0.065),
-                  child: GestureDetector(
-                    onTap: () {
-                      print('Handle shield tap');
-                      onInfoPress(context, "Shield of Faith",
-                          "I will pick up the shield of faith, to put out the fires from Satan’s flaming arrows, And I will have confidence that God is good and faithful and true to His Word, even if I have trouble in my life.");
-                    },
-                    child: Container(
-                      width: imageWidth * 0.5,
-                      child: Image.asset(
-                        'lib/assets/Soilder/body parts/sheild.imageset/sheild.png',
-                        fit: BoxFit.contain,
+            // Shield
+            shield
+                ? Transform.translate(
+                    offset: Offset(imageWidth * 0.29, imageHeight * -0.057),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('Handle shield tap');
+                        onInfoPress(context, "Shield of Faith",
+                            "I pick up the shield of faith, with which I am able to quench every dart and arrow from the wicked who seek to destroy me spiritually, physically, mentally, or emotionally. I have confidence that God is good, faithful and true to His Word, even in times of trouble.");
+                      },
+                      child: Container(
+                        width: imageWidth * 0.41,
+                        //decoration: BoxDecoration(border: Border.all()),
+                        child: Image.asset(
+                          'lib/assets/SoilderV3/Sheild.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                )
-              : SizedBox.shrink(),
+                  )
+                : SizedBox.shrink(),
 
-          // Helmet
-          helmet
-              ? Transform.translate(
-                  offset: Offset(imageWidth * -0.049, imageHeight * -0.39),
-                  child: GestureDetector(
-                    onTap: () {
-                      print('Handle helmet tap');
-                      onInfoPress(context, "Helmet of Salvation",
-                          "As I put on the Helmet of Salvation, I can have confidence that the troubles of my world will not compare with the glories which I will see in Heaven.");
-                    },
-                    child: Container(
-                      width: imageWidth * 0.33,
-                      child: Image.asset(
-                        'lib/assets/Soilder/body parts/Helmet.imageset/Helmet.png',
-                        fit: BoxFit.contain,
+            // Helmet
+            helmet
+                ? Transform.translate(
+                    offset: Offset(imageWidth * -0.171, imageHeight * -0.369),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('Handle helmet tap');
+                        onInfoPress(context, "Helmet of Salvation",
+                            "I put on the helmet of salvation, which protects my mind and thoughts, reminding me, I am forgiven, set free, saved by the grace of Christ Jesus. Lord, protect my mind and remind me that nothing can separate me from Your love.");
+                      },
+                      child: Container(
+                        width: imageWidth * 0.355,
+                        child: Image.asset(
+                          'lib/assets/SoilderV3/Helmet.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                )
-              : SizedBox.shrink(),
-        ],
+                  )
+                : SizedBox.shrink(),
+          ],
+        ),
       ),
     );
   }
