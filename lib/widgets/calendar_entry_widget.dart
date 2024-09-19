@@ -174,12 +174,18 @@ class CalendarEntryWidget extends HookConsumerWidget {
   Future<Widget> _getImageWidget(String imagePath) async {
     if (imagePath.isEmpty) {
       return Container();
-    } else if (imagePath.startsWith("lib/assets")) {
+    } else if (imagePath.startsWith("lib/assets") ||
+        imagePath.startsWith("assets")) {
+      // This is an asset image
       return Image.asset(
         imagePath,
         fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) {
+          return Text('Error loading image');
+        },
       );
     } else {
+      // This is a file system image
       try {
         final directory = await getApplicationDocumentsDirectory();
         final fullPath = '${directory.path}/$imagePath';

@@ -1,12 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:morning_mustard/providers/calendar_entry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 final calendarEntriesProvider =
     StateNotifierProvider<CalendarEntryListNotifier, List<CalendarEntry>>(
@@ -53,9 +56,13 @@ class CalendarEntryListNotifier extends StateNotifier<List<CalendarEntry>> {
   }
 
   Future<void> updateImagePath(int index, String newPath) async {
+    print("Setting new path: " + newPath);
     state = state.map((entry) {
       if (entry.index == index) {
-        // Only save the file name, not the full path
+        if (newPath.startsWith("lib/assets") || newPath.startsWith("assets")) {
+          return entry.copyWith(imagePath: newPath);
+        }
+        // Only save the file name, not the full path for user images
         return entry.copyWith(imagePath: newPath.split('/').last);
       }
       return entry;
@@ -75,6 +82,23 @@ class CalendarEntryListNotifier extends StateNotifier<List<CalendarEntry>> {
   }
 
   Future<void> pickImage(int index) async {
+    if (Platform.isAndroid) {
+      final androidInfo = await DeviceInfoPlugin().androidInfo;
+      if (androidInfo.version.sdkInt <= 32) {
+        var status = await Permission.storage.status;
+        if (!status.isGranted) {
+          await Permission.storage.request();
+        }
+      } else {
+        var status = await Permission.storage.status;
+        if (!status.isGranted) {
+          await Permission.photos.request();
+        }
+      }
+    } else {
+      var status = await Permission.storage.isGranted;
+    }
+
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
