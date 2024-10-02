@@ -90,7 +90,7 @@ class HeartPage extends HookConsumerWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                      top: 10.h,
+                      top: 50.h,
                       right: MediaQuery.of(context).size.width * 0.05,
                       left: MediaQuery.of(context).size.width * 0.05),
                   child: Column(

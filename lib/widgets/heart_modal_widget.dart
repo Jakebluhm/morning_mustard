@@ -88,6 +88,7 @@ class HeartModal extends HookConsumerWidget {
                                   fontFamily: 'PlaypenSans',
                                 ),
                               ),
+                        Divider(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -99,21 +100,18 @@ class HeartModal extends HookConsumerWidget {
                                   _showKeyboard();
                                 },
                                 icon: const Icon(Icons.edit)),
-                            Container(
-                              decoration: BoxDecoration(border: Border.all()),
-                              child: IconButton(
-                                  padding: const EdgeInsets.all(
-                                      4.0), // Adjust padding
-                                  constraints: const BoxConstraints(
-                                    minWidth:
-                                        24.0, // Adjust these values to make the button smaller
-                                    minHeight: 24.0,
-                                  ),
-                                  onPressed: () {
-                                    onRemove(verses.current[index]);
-                                  },
-                                  icon: const Icon(Icons.delete_forever)),
-                            ),
+                            IconButton(
+                                padding:
+                                    const EdgeInsets.all(0.0), // Adjust padding
+                                constraints: const BoxConstraints(
+                                  minWidth:
+                                      18.0, // Adjust these values to make the button smaller
+                                  minHeight: 18.0,
+                                ),
+                                onPressed: () {
+                                  onRemove(verses.current[index]);
+                                },
+                                icon: const Icon(Icons.delete_forever)),
                           ],
                         )
                       ],

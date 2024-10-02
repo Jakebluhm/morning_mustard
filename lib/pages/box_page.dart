@@ -100,7 +100,7 @@ class BoxPage extends HookConsumerWidget {
                       ),
                     ),
                     Transform.translate(
-                      offset: Offset(0, 15.h),
+                      offset: Offset(0, 40.h),
                       child: Material(
                         color: const Color.fromARGB(
                             250, 158, 61, 61), // Background color
@@ -119,7 +119,7 @@ class BoxPage extends HookConsumerWidget {
                       ),
                     ),
                     Transform.translate(
-                      offset: Offset(0, 15.h),
+                      offset: Offset(0, 40.h),
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 45.w),
                         child: Text(
