@@ -135,6 +135,7 @@ flutter:
     - lib/assets/Faces/
     - lib/assets/Objects/
     - lib/assets/new-faces/
+    - lib/assets/SoilderV3/black-sword.png
     - lib/assets/SoilderV3/Chest.png
     - lib/assets/SoilderV3/Helmet.png
     - lib/assets/SoilderV3/Legs.png

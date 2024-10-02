@@ -36,7 +36,7 @@ class ArmorWidget extends HookConsumerWidget {
     // 519 x 799
     return Center(
       child: Padding(
-        padding: EdgeInsets.only(left: 56.0.w, bottom: 24.0.w),
+        padding: EdgeInsets.only(left: 54.0.w, bottom: 24.0.w),
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
@@ -116,7 +116,29 @@ class ArmorWidget extends HookConsumerWidget {
                     ),
                   )
                 : SizedBox.shrink(),
-
+// Sword
+            waist
+                ? Transform.translate(
+                    offset: Offset(imageWidth * -0.19, imageHeight * 0.125),
+                    child: Transform.rotate(
+                      angle: degreesToRadians(0),
+                      child: GestureDetector(
+                        onTap: () {
+                          print('Handle sword tap');
+                          onInfoPress(context, "Sword of the Spirit",
+                              "I take up the sword of the Spirit, Your very Word, the offensive weapon given to me for battle, which has the power to demolish strongholds, alive, active, and sharper than any double-edged sword.");
+                        },
+                        child: Container(
+                          width: imageWidth * 0.60,
+                          child: Image.asset(
+                            'lib/assets/SoilderV3/black-sword.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                : SizedBox.shrink(),
             // Sword
             sword
                 ? Transform.translate(
@@ -144,7 +166,7 @@ class ArmorWidget extends HookConsumerWidget {
             // Shield
             shield
                 ? Transform.translate(
-                    offset: Offset(imageWidth * 0.29, imageHeight * -0.057),
+                    offset: Offset(imageWidth * 0.29, imageHeight * -0.06),
                     child: GestureDetector(
                       onTap: () {
                         print('Handle shield tap');
