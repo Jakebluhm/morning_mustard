@@ -31,12 +31,12 @@ class ArmorWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    double imageWidth = screenHeight * 0.275; // Width of the soldier image
+    double imageWidth = screenHeight * 0.3; // Width of the soldier image
     double imageHeight = imageWidth * 1.539499;
     // 519 x 799
     return Center(
       child: Padding(
-        padding: EdgeInsets.only(left: 54.0.w, bottom: 24.0.w),
+        padding: EdgeInsets.only(left: 62.0.w, bottom: 28.0.h),
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
@@ -188,7 +188,7 @@ class ArmorWidget extends HookConsumerWidget {
             // Helmet
             helmet
                 ? Transform.translate(
-                    offset: Offset(imageWidth * -0.171, imageHeight * -0.369),
+                    offset: Offset(imageWidth * -0.174, imageHeight * -0.37),
                     child: GestureDetector(
                       onTap: () {
                         print('Handle helmet tap');
@@ -196,7 +196,7 @@ class ArmorWidget extends HookConsumerWidget {
                             "I put on the helmet of salvation, which protects my mind and thoughts, reminding me, I am forgiven, set free, saved by the grace of Christ Jesus. Lord, protect my mind and remind me that nothing can separate me from Your love.");
                       },
                       child: Container(
-                        width: imageWidth * 0.355,
+                        width: imageWidth * 0.35,
                         child: Image.asset(
                           'lib/assets/SoilderV3/Helmet.png',
                           fit: BoxFit.contain,

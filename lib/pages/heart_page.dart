@@ -111,9 +111,9 @@ class HeartPage extends HookConsumerWidget {
                                 ..color = Color.fromARGB(255, 224, 122, 54),
                               shadows: [
                                 Shadow(
-                                  offset: Offset(0.0, -0.5),
-                                  blurRadius: 15.0,
-                                  color: Colors.black.withOpacity(0.95),
+                                  offset: Offset(3.0, 3),
+                                  blurRadius: 5.0,
+                                  color: Colors.black.withOpacity(0.85),
                                 ),
                               ],
                             ),
@@ -148,9 +148,9 @@ class HeartPage extends HookConsumerWidget {
                                 ..color = Color.fromARGB(255, 224, 122, 54),
                               shadows: [
                                 Shadow(
-                                  offset: Offset(0.0, -0.5),
-                                  blurRadius: 15.0,
-                                  color: Colors.black.withOpacity(0.95),
+                                  offset: Offset(3.0, 3),
+                                  blurRadius: 5.0,
+                                  color: Colors.black.withOpacity(0.85),
                                 ),
                               ],
                             ),

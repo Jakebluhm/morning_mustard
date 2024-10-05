@@ -15,33 +15,27 @@ class ButtonItem {
 
 List<ButtonItem> armorButtonItems = [
   ButtonItem(
-    imagePath:
-        'lib/assets/Soilder/armor with box/shord with box.imageset/shord with box.png',
+    imagePath: 'lib/assets/SoilderV3/Sword.png',
     label: 'sword',
   ),
   ButtonItem(
-    imagePath:
-        'lib/assets/Soilder/armor with box/west with box.imageset/west with box.png',
+    imagePath: 'lib/assets/SoilderV3/Waist.png',
     label: 'waist',
   ),
   ButtonItem(
-    imagePath:
-        'lib/assets/Soilder/armor with box/sheild with box.imageset/sheild with box.png',
+    imagePath: 'lib/assets/SoilderV3/Sheild.png',
     label: 'shield',
   ),
   ButtonItem(
-    imagePath:
-        'lib/assets/Soilder/armor with box/chest sheild with box.imageset/chest sheild with box.png',
+    imagePath: 'lib/assets/SoilderV3/Chest.png',
     label: 'chest',
   ),
   ButtonItem(
-    imagePath:
-        'lib/assets/Soilder/armor with box/Helmet with box.imageset/Helmet with box.png',
+    imagePath: 'lib/assets/SoilderV3/Helmet.png',
     label: 'helmet',
   ),
   ButtonItem(
-    imagePath:
-        'lib/assets/Soilder/armor with box/leg arms with box.imageset/leg arms with box.png',
+    imagePath: 'lib/assets/SoilderV3/Legs.png',
     label: 'legs',
   ),
   // Add other items here if needed
