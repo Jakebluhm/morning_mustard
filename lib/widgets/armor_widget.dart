@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:math' as math;
+
+import 'rotated_rectangular_gesture_detector.dart';
 
 double degreesToRadians(double degrees) {
   return degrees * (math.pi / 180);
@@ -36,7 +40,7 @@ class ArmorWidget extends HookConsumerWidget {
     // 519 x 799
     return Center(
       child: Padding(
-        padding: EdgeInsets.only(left: 62.0.w, bottom: 28.0.h),
+        padding: EdgeInsets.only(left: (imageWidth * 0.25), bottom: 28.0.h),
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
@@ -62,7 +66,6 @@ class ArmorWidget extends HookConsumerWidget {
                             "I put on the breastplate of righteousness to protect my heart from evil desires and temptations, for everything I do flows out of it. Through Your Son, Jesus Christ, I have been made righteous in Your sight. Help me to live by the power of the Holy Spirit as a righteous person.");
                       },
                       child: Container(
-                        //decoration: BoxDecoration(border: Border.all()),
                         width: imageWidth * 0.575,
                         child: Image.asset(
                           'lib/assets/SoilderV3/Chest.png',
@@ -122,12 +125,7 @@ class ArmorWidget extends HookConsumerWidget {
                     offset: Offset(imageWidth * -0.19, imageHeight * 0.125),
                     child: Transform.rotate(
                       angle: degreesToRadians(0),
-                      child: GestureDetector(
-                        onTap: () {
-                          print('Handle sword tap');
-                          onInfoPress(context, "Sword of the Spirit",
-                              "I take up the sword of the Spirit, Your very Word, the offensive weapon given to me for battle, which has the power to demolish strongholds, alive, active, and sharper than any double-edged sword.");
-                        },
+                      child: IgnorePointer(
                         child: Container(
                           width: imageWidth * 0.60,
                           child: Image.asset(
@@ -145,7 +143,11 @@ class ArmorWidget extends HookConsumerWidget {
                     offset: Offset(imageWidth * -0.19, imageHeight * 0.125),
                     child: Transform.rotate(
                       angle: degreesToRadians(0),
-                      child: GestureDetector(
+                      child: RotatedRectangleGestureDetector(
+                        width: 150.w,
+                        height: 35.h,
+                        rotationAngle:
+                            degreesToRadians(23), // 45 degrees in radians
                         onTap: () {
                           print('Handle sword tap');
                           onInfoPress(context, "Sword of the Spirit",
@@ -175,7 +177,6 @@ class ArmorWidget extends HookConsumerWidget {
                       },
                       child: Container(
                         width: imageWidth * 0.41,
-                        //decoration: BoxDecoration(border: Border.all()),
                         child: Image.asset(
                           'lib/assets/SoilderV3/Sheild.png',
                           fit: BoxFit.contain,

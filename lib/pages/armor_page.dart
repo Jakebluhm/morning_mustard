@@ -72,69 +72,63 @@ class ArmorPage extends HookConsumerWidget {
           children: [
             Positioned(
               top: 0,
-              child: Column(
+              child: Stack(
                 children: [
-                  Center(
-                    child: Container(
-                      decoration: BoxDecoration(
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 0.9),
+                      border: Border.all(
                         color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 0.9),
-                        border: Border.all(
-                          color: Color.fromRGBO(0x6b, 0x3e, 0x2e, 0.9),
-                          width: 0,
-                        ),
+                        width: 0,
                       ),
-                      width: screenWidth,
-                      height: screenHeight * 0.13,
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: EdgeInsets.only(top: 24.0.h),
-                child: Container(
-                  width: screenWidth * 0.45,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: <Widget>[
-                      // Outline text
-                      Text(
-                        "Put on",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'PlaypenSans',
-                          letterSpacing: 2,
-                          fontSize: 42,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 4
-                            ..color = Color.fromARGB(255, 224, 122, 54),
-                          shadows: [
-                            Shadow(
-                              offset: Offset(3.0, 3),
-                              blurRadius: 5.0,
-                              color: Colors.black.withOpacity(0.85),
+                    width: screenWidth,
+                    height: 100.h,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: <Widget>[
+                            // Outline text
+                            Text(
+                              "Put On Your Armor",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'PlaypenSans',
+                                letterSpacing: 2,
+                                fontSize: 26.sp,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 4
+                                  ..color = Color.fromARGB(255, 224, 122, 54),
+                                shadows: [
+                                  Shadow(
+                                    offset: Offset(3.0, 3),
+                                    blurRadius: 5.0,
+                                    color: Colors.black.withOpacity(0.85),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // Filled text
+                            Text(
+                              "Put On Your Armor",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'PlaypenSans',
+                                letterSpacing: 2,
+                                fontSize: 26.sp,
+                                color: Colors
+                                    .white, // Change to your desired fill color
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      // Filled text
-                      const Text(
-                        "Put on",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'PlaypenSans',
-                          letterSpacing: 2,
-                          fontSize: 42,
-                          color:
-                              Colors.white, // Change to your desired fill color
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
             Positioned(
@@ -152,112 +146,74 @@ class ArmorPage extends HookConsumerWidget {
                       ),
                       width: screenWidth,
                       height: screenHeight * 0.2,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Column(
-                mainAxisSize: MainAxisSize.min, // Add this line
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    mainAxisSize: MainAxisSize.max,
-                    children: armorButtonItems.map((buttonItem) {
-                      return GestureDetector(
-                          onTap: () async {
-                            // Trigger haptic feedback
-                            await HapticFeedback.mediumImpact();
-                            if (buttonItem.hasMatchingLabel('chest')) {
-                              chestItem.value = !chestItem.value;
-                            } else if (buttonItem.hasMatchingLabel('helmet')) {
-                              helmetItem.value = !helmetItem.value;
-                            } else if (buttonItem.hasMatchingLabel('legs')) {
-                              legsItem.value = !legsItem.value;
-                            } else if (buttonItem.hasMatchingLabel('shield')) {
-                              shieldItem.value = !shieldItem.value;
-                            } else if (buttonItem.hasMatchingLabel('sword')) {
-                              swordItem.value = !swordItem.value;
-                            } else if (buttonItem.hasMatchingLabel('waist')) {
-                              waistItem.value = !waistItem.value;
-                            }
-                          },
-                          child: Container(
-                            width:
-                                screenWidth * 0.14, // Adjust the size as needed
-                            height: screenHeight * 0.1, // Adjust the size as
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Color.fromRGBO(224, 85, 10, 1),
-                                    width: 3),
-                                color: Color.fromRGBO(255, 217, 141, 1),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: buttonItem.hasMatchingLabel('shield')
-                                ? Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8.0.w),
-                                    child: Image.asset(
-                                      buttonItem.imagePath,
-                                    ),
-                                  )
-                                : Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 3.0.w),
-                                    child: Image.asset(
-                                      buttonItem.imagePath,
-                                    ),
-                                  ),
-                          ));
-                    }).toList(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 8.0.w,
-                      right: 8.0.w,
-                      top: 8.0.h,
-                      bottom: 16.0.h,
-                    ),
-                    child: Container(
-                      width: screenWidth * 0.75,
-                      child: Stack(
+                      child: Align(
                         alignment: Alignment.center,
-                        children: <Widget>[
-                          // Outline text
-                          Text(
-                            "your armor",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'PlaypenSans',
-                              letterSpacing: 2,
-                              fontSize: 36,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = 4
-                                ..color = Color.fromARGB(255, 224, 122, 54),
-                              shadows: [
-                                Shadow(
-                                  offset: Offset(3.0, 3),
-                                  blurRadius: 5.0,
-                                  color: Colors.black.withOpacity(0.85),
-                                ),
-                              ],
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min, // Add this line
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisSize: MainAxisSize.max,
+                              children: armorButtonItems.map((buttonItem) {
+                                return GestureDetector(
+                                    onTap: () async {
+                                      // Trigger haptic feedback
+                                      await HapticFeedback.mediumImpact();
+                                      if (buttonItem
+                                          .hasMatchingLabel('chest')) {
+                                        chestItem.value = !chestItem.value;
+                                      } else if (buttonItem
+                                          .hasMatchingLabel('helmet')) {
+                                        helmetItem.value = !helmetItem.value;
+                                      } else if (buttonItem
+                                          .hasMatchingLabel('legs')) {
+                                        legsItem.value = !legsItem.value;
+                                      } else if (buttonItem
+                                          .hasMatchingLabel('shield')) {
+                                        shieldItem.value = !shieldItem.value;
+                                      } else if (buttonItem
+                                          .hasMatchingLabel('sword')) {
+                                        swordItem.value = !swordItem.value;
+                                      } else if (buttonItem
+                                          .hasMatchingLabel('waist')) {
+                                        waistItem.value = !waistItem.value;
+                                      }
+                                    },
+                                    child: Container(
+                                      width: screenWidth *
+                                          0.14, // Adjust the size as needed
+                                      height: screenHeight *
+                                          0.1, // Adjust the size as
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Color.fromRGBO(
+                                                  224, 85, 10, 1),
+                                              width: 3),
+                                          color:
+                                              Color.fromRGBO(255, 217, 141, 1),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child:
+                                          buttonItem.hasMatchingLabel('shield')
+                                              ? Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 8.0.w),
+                                                  child: Image.asset(
+                                                    buttonItem.imagePath,
+                                                  ),
+                                                )
+                                              : Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 3.0.w),
+                                                  child: Image.asset(
+                                                    buttonItem.imagePath,
+                                                  ),
+                                                ),
+                                    ));
+                              }).toList(),
                             ),
-                          ),
-                          // Filled text
-                          const Text(
-                            "your armor",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'PlaypenSans',
-                              letterSpacing: 2,
-                              fontSize: 36,
-                              color: Colors
-                                  .white, // Change to your desired fill color
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

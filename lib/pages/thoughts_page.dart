@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:morning_mustard/services/navigation_service/navigation_service.dart';
+import 'package:morning_mustard/widgets/clip_art_text.dart';
 
 class ThoughtsPage extends HookConsumerWidget {
   ThoughtsPage();
@@ -74,8 +75,22 @@ class ThoughtsPage extends HookConsumerWidget {
                     onChanged: (newText) {
                       textState.value = newText; // Updating the state
                     },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 5.0, color: Colors.black),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(15.0))),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 5.0, color: Colors.black),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(15.0))),
+                      border: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 5.0, color: Colors.black),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(15.0))),
                     ),
                   ),
                 ),
@@ -91,60 +106,21 @@ class ThoughtsPage extends HookConsumerWidget {
                 ),
               ),
             ),
-            IntrinsicHeight(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(17, 24, 102, 0.98),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Column(
-                    children: [
-                      // Image.asset(
-                      //   'lib/assets/Thought/I Take my Thoughts  Captive to the  Obedience of Jesus.png',
-                      //   fit: BoxFit.contain,
-                      // ),
-                      Stack(
-                        children: <Widget>[
-                          // Outline text
-                          Text(
-                            "I take every thought captive to the obedience of Jesus Christ, never emptying my mind, but instead thinking on whatever is True, Noble, Right, Lovely, Admirable, Excellent and Praiseworthy.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'PlaypenSans',
-                              letterSpacing: 2,
-                              fontSize: 18,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = 2
-                                ..color = Color.fromARGB(255, 141, 65, 11),
-                              shadows: [
-                                Shadow(
-                                  offset: Offset(0.0, -0.5),
-                                  blurRadius: 15.0,
-                                  color: Colors.black.withOpacity(0.95),
-                                ),
-                              ],
-                            ),
-                          ),
-                          // Filled text
-                          const Text(
-                            "I take every thought captive to the obedience of Jesus Christ, never emptying my mind, but instead thinking on whatever is True, Noble, Right, Lovely, Admirable, Excellent and Praiseworthy.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'PlaypenSans',
-                              letterSpacing: 2,
-                              fontSize: 18,
-                              color: Color.fromRGBO(248, 228, 152,
-                                  1), // Change to your desired fill color
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            Container(
+              height: 125.h,
+              width: imageWidth,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(17, 24, 102, 0.98),
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: Center(
+                    child: ClipArtText(
+                      text:
+                          "I take every thought captive to the obedience of Jesus Christ, never emptying my mind, but instead thinking on whatever is True, Noble, Right, Lovely, Admirable, Excellent and Praiseworthy.",
+                      fontSize: 16,
+                    ),
+                  )),
             ),
             //Blue bar for words
             Transform.translate(
@@ -162,11 +138,10 @@ class ThoughtsPage extends HookConsumerWidget {
               offset: Offset(0, screenHeight * 0.3),
               child: Container(
                 height: screenHeight * 0.05,
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Image.asset(
-                    'lib/assets/Thought/Thoughts.png',
-                    fit: BoxFit.contain,
+                child: const Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: ClipArtText(
+                    text: "Thoughts",
                   ),
                 ),
               ),
@@ -175,11 +150,10 @@ class ThoughtsPage extends HookConsumerWidget {
               offset: Offset(screenWidth * 0.27, screenHeight * 0.3),
               child: Container(
                 height: screenHeight * 0.05,
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Image.asset(
-                    'lib/assets/Thought/Feelings.png',
-                    fit: BoxFit.contain,
+                child: const Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: ClipArtText(
+                    text: "Feelings",
                   ),
                 ),
               ),
@@ -188,11 +162,10 @@ class ThoughtsPage extends HookConsumerWidget {
               offset: Offset(screenWidth * -0.27, screenHeight * 0.3),
               child: Container(
                 height: screenHeight * 0.05,
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Image.asset(
-                    'lib/assets/Thought/fact.png',
-                    fit: BoxFit.contain,
+                child: const Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: ClipArtText(
+                    text: "Facts",
                   ),
                 ),
               ),
@@ -240,46 +213,12 @@ class ThoughtsPage extends HookConsumerWidget {
             Padding(
               padding:
                   EdgeInsets.only(bottom: 32.0.h, left: 8.0.w, right: 8.0.w),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Stack(
-                  children: <Widget>[
-                    // Outline text
-                    Text(
-                      "I choose to live by Truth not by feelings",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'PlaypenSans',
-                        letterSpacing: 2,
-                        fontSize: 18,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Color.fromARGB(255, 141, 65, 11),
-                        shadows: [
-                          Shadow(
-                            offset: Offset(0.0, -0.5),
-                            blurRadius: 15.0,
-                            color: Colors.black.withOpacity(0.95),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Filled text
-                    const Text(
-                      "I choose to live by Truth not by feelings",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'PlaypenSans',
-                        letterSpacing: 2,
-                        fontSize: 18,
-                        color: Color.fromRGBO(248, 228, 152,
-                            1), // Change to your desired fill color
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: const Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ClipArtText(
+                    text: "I CHOOSE TO LIVE BY FACTS NOT FEELINGS",
+                    fontSize: 16,
+                  )),
             ),
           ],
         ),
