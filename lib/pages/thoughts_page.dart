@@ -112,13 +112,13 @@ class ThoughtsPage extends HookConsumerWidget {
               decoration: BoxDecoration(
                   color: Color.fromRGBO(17, 24, 102, 0.98),
                   borderRadius: BorderRadius.circular(10)),
-              child: const Padding(
+              child: Padding(
                   padding: EdgeInsets.all(4.0),
                   child: Center(
                     child: ClipArtText(
                       text:
                           "I take every thought captive to the obedience of Jesus Christ, never emptying my mind, but instead thinking on whatever is True, Noble, Right, Lovely, Admirable, Excellent and Praiseworthy.",
-                      fontSize: 16,
+                      fontSize: 9.sp,
                     ),
                   )),
             ),
@@ -131,94 +131,109 @@ class ThoughtsPage extends HookConsumerWidget {
                       borderRadius: BorderRadius.circular(10)),
                   height: screenHeight * 0.15,
                   width: imageWidth,
-                  child: Container()),
+                  child: Center(
+                    child: Container(
+                      decoration: BoxDecoration(border: Border.all(width: 2)),
+                      width: imageWidth,
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 8.0.h),
+                          child: ClipArtText(
+                            text: "I CHOOSE TO LIVE BY FACTS NOT FEELINGS",
+                            fontSize: 11.sp,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )),
             ),
             // Words
             Transform.translate(
-              offset: Offset(0, screenHeight * 0.3),
+              offset: Offset(0, screenHeight * 0.25),
               child: Container(
-                height: screenHeight * 0.05,
-                child: const Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: ClipArtText(
-                    text: "Thoughts",
-                  ),
+                width: imageWidth,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // First Column: t1 and "Facts"
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: screenHeight * 0.11,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Image.asset(
+                              'lib/assets/Thought/t1.png',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: screenHeight * 0.05,
+                          child: const Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: ClipArtText(
+                              text: "Facts",
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    // Second Column: t2 and "Thoughts"
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: screenHeight * 0.11,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Image.asset(
+                              'lib/assets/Thought/t2.png',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: screenHeight * 0.05,
+                          child: const Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: ClipArtText(
+                              text: "Thoughts",
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    // Third Column: t3 and "Feelings"
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: screenHeight * 0.11,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Image.asset(
+                              'lib/assets/Thought/t3.png',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: screenHeight * 0.05,
+                          child: const Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: ClipArtText(
+                              text: "Feelings",
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Transform.translate(
-              offset: Offset(screenWidth * 0.27, screenHeight * 0.3),
-              child: Container(
-                height: screenHeight * 0.05,
-                child: const Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: ClipArtText(
-                    text: "Feelings",
-                  ),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(screenWidth * -0.27, screenHeight * 0.3),
-              child: Container(
-                height: screenHeight * 0.05,
-                child: const Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: ClipArtText(
-                    text: "Facts",
-                  ),
-                ),
-              ),
-            ),
-            // Trains
-            Transform.translate(
-              offset: Offset(screenWidth * -0.27, screenHeight * 0.225),
-              child: Container(
-                height: screenHeight * 0.11,
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Image.asset(
-                    'lib/assets/Thought/t1.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(0, screenHeight * 0.225),
-              child: Container(
-                height: screenHeight * 0.11,
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Image.asset(
-                    'lib/assets/Thought/t2.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(screenWidth * 0.27, screenHeight * 0.225),
-              child: Container(
-                height: screenHeight * 0.11,
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Image.asset(
-                    'lib/assets/Thought/t3.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.only(bottom: 32.0.h, left: 8.0.w, right: 8.0.w),
-              child: const Align(
-                  alignment: Alignment.bottomCenter,
-                  child: ClipArtText(
-                    text: "I CHOOSE TO LIVE BY FACTS NOT FEELINGS",
-                    fontSize: 16,
-                  )),
             ),
           ],
         ),
