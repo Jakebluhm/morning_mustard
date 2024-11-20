@@ -125,7 +125,7 @@ class CalendarPage extends HookConsumerWidget {
         preferredSize: Size.fromHeight(25.0.h),
         child: AppBar(
           title: Text(
-            'Prayers Today',
+            'Prayers',
             style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,

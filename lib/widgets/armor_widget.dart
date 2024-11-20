@@ -107,7 +107,7 @@ class ArmorWidget extends HookConsumerWidget {
                         onInfoPress(
                             context,
                             "Shod My Feet w/the Preparation of the Gospel",
-                            "I tie on the footgear of the Gospel of peace, so I am ready to take the good news of what Jesus did on the cross to wherever You may send me. I choose to stand on the firm foundation of Jesus Christ and the knowledge of His saving death, burial and resurrection.");
+                            "I tie on the footgear of the Gospel of peace, so I am ready to take the good news of what Jesus did on the cross to whomever You may send me. I choose to stand on the firm foundation of Jesus Christ and the knowledge of His saving death, burial and resurrection.");
                       },
                       child: Container(
                         width: imageWidth * 0.65,
@@ -173,7 +173,7 @@ class ArmorWidget extends HookConsumerWidget {
                       onTap: () {
                         print('Handle shield tap');
                         onInfoPress(context, "Shield of Faith",
-                            "I pick up the shield of faith, with which I am able to quench every dart and arrow from the wicked who seek to destroy me spiritually, physically, mentally, or emotionally. I have confidence that God is good, faithful and true to His Word, even in times of trouble.");
+                            "I pick up the shield of faith, with which I am able to quench every dart and arrow from the wicked who seek to destroy me spiritually, physically, mentally, or emotionally. I have confidence that you, Lord God are good, faithful and true to Your Word, even in times of trouble.");
                       },
                       child: Container(
                         width: imageWidth * 0.41,
